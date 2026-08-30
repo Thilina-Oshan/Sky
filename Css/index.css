@@ -1,0 +1,137 @@
+/* Sticky & Custom Navbar */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #4d64e8;
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.hero-section {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
+                url('/Img/skylarkbg.png');
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Desktop Button Styling */
+.btn-custom {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    margin-top: 40px;
+    margin-left: 80px;
+    display: inline-block;
+}
+
+.btn-custom:hover {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+/* 📱 Mobile Responsive Styles (Screens 768px and smaller) */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh; /* Reduces hero section height for mobile */
+        background-size: contain; /* Prevents image from cropping on small screens */
+        background-position: center center;
+    }
+
+    /* Adjust button position so it stays inside mobile screens */
+    .btn-custom {
+        margin-top: 100px !important; /* Reduces vertical gap */
+        margin-left: 15px !important;  /* Reduces horizontal shift so it doesn't overflow */
+        padding: 6px 16px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Left-align the container content */
+.hero-content {
+    max-width: 50%;
+    text-align: left;
+    padding-left: 2rem;
+    margin-top: 180px; /* Pushes the button right under the image text */
+}
+
+/* Styled Button */
+.hero-content .btn-custom {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 12px 32px;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.hero-content .btn-custom:hover {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        padding-left: 0;
+        margin-top: 120px;
+    }
+}
+
+/* Adjust height for mobile screens */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 60vh;
+        padding: 40px 0;
+    }
+}
+
+.btn-custom {
+    background-color: #1a1a1a; /* Dark Black/Grey */
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    margin-top: 200px;   /* Controls vertical position (down) */
+    margin-left: 150px;  /* Controls horizontal position (shifts right) */
+    display: inline-block;
+}
+
+.btn-custom:hover {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+/* Hover Effects for Product Cards */
+.product-card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Trust Badges */
+.trust-badge-icon {
+    font-size: 2.5rem;
+    color: #556ee6;
+}

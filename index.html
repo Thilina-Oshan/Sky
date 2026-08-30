@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylark - Elevate Your Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Css/index.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">SKYLARK<span class="text-primary">.</span></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#collection">Collection</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="text-dark cart-icon-container">
+                        <i class="bi bi-cart3 fs-4"></i>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+   <section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <a href="#collection" class="btn btn-custom fw-semibold">SHOP NOW</a>
+        </div>
+    </div>
+</section>
+
+    <section class="py-5 bg-light">
+        <div class="container py-4">
+            <h2 class="text-center fw-bold mb-4">Shop by Category</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white border-0 overflow-hidden">
+                        <img src="/Img/mensware.jpg" class="card-img opacity-75" alt="Men's Wear">
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <h4 class="card-title fw-bold">Men's Collection</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white border-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" class="card-img opacity-75" alt="Women's Wear">
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <h4 class="card-title fw-bold">Women's Collection</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white border-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" class="card-img opacity-75" alt="Accessories">
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <h4 class="card-title fw-bold">Accessories</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="py-5">
+        <div class="container py-4">
+            <h2 class="text-center fw-bold mb-5">Featured Products</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product 1">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">T-Shirts</h6>
+                                <h5 class="card-title fs-6 fw-bold">Classic White Tee</h5>
+                            </div>
+                            <div class="mt-3">
+                                <p class="fw-bold mb-2">Rs. 2,500</p>
+                                <button class="btn btn-sm btn-outline-primary w-100 add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product 2">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">Jackets</h6>
+                                <h5 class="card-title fs-6 fw-bold">Casual Jacket</h5>
+                            </div>
+                            <div class="mt-3">
+                                <p class="fw-bold mb-2">Rs. 6,800</p>
+                                <button class="btn btn-sm btn-outline-primary w-100 add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product 3">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">Footwear</h6>
+                                <h5 class="card-title fs-6 fw-bold">Red Sport Sneakers</h5>
+                            </div>
+                            <div class="mt-3">
+                                <p class="fw-bold mb-2">Rs. 8,900</p>
+                                <button class="btn btn-sm btn-outline-primary w-100 add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Product 4">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-subtitle text-muted mb-1">T-Shirts</h6>
+                                <h5 class="card-title fs-6 fw-bold">Black Cotton Shirt</h5>
+                            </div>
+                            <div class="mt-3">
+                                <p class="fw-bold mb-2">Rs. 3,200</p>
+                                <button class="btn btn-sm btn-outline-primary w-100 add-to-cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 bg-light border-top border-bottom">
+        <div class="container">
+            <div class="row text-center g-3">
+                <div class="col-md-4">
+                    <i class="bi bi-truck trust-badge-icon mb-2"></i>
+                    <h6 class="fw-bold">Islandwide Delivery</h6>
+                    <small class="text-muted">Fast shipping directly to your door</small>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-shield-check trust-badge-icon mb-2"></i>
+                    <h6 class="fw-bold">Secure Payment</h6>
+                    <small class="text-muted">100% secure online transactions</small>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-arrow-counterclockwise trust-badge-icon mb-2"></i>
+                    <h6 class="fw-bold">Easy Returns</h6>
+                    <small class="text-muted">7-day hassle-free return policy</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="about" class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h4 class="fw-bold">SKYLARK<span class="text-primary">.</span></h4>
+                    <p class="text-muted">Elevate your daily fashion with our premium and trendsetting apparel collection.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted text-decoration-none">Home</a></li>
+                        <li><a href="#collection" class="text-muted text-decoration-none">Collection</a></li>
+                        <li><a href="#about" class="text-muted text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Follow Us</h5>
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-4 border-secondary">
+            <div class="text-center text-muted small">
+                &copy; 2026 Skylark. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/Js/product.js"></script>
+</body>
+</html>
