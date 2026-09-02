@@ -1,17 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
     <div class="container">
         <a class="navbar-brand fw-bold fs-3" href="/index.html">SKYLARK<span class="text-primary">.</span></a>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold">
                 <li class="nav-item"><a class="nav-link active" href="/index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/collection.html">Collection</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
             </ul>
-            <div class="d-flex align-items-center">
-                <a href="#" class="text-dark cart-icon-container">
+
+            <div class="d-flex align-items-center gap-3 mt-2 mt-lg-0">
+                <form class="d-flex" role="search" action="/pages/collection.html" method="GET">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control rounded-start-pill border-end-0" type="search" name="search" placeholder="Search products..." aria-label="Search">
+                        <button class="btn btn-outline-secondary rounded-end-pill border-start-0 bg-white" type="submit">
+                            <i class="bi bi-search text-dark"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <a href="#" class="text-dark cart-icon-container position-relative ms-2">
                     <i class="bi bi-cart3 fs-4"></i>
                     <span class="cart-badge" id="cartCount">0</span>
                 </a>
