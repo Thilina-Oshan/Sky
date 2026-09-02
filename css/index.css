@@ -1,4 +1,3 @@
-
 /* Sticky & Custom Navbar */
 .navbar {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -22,12 +21,13 @@
 
 .hero-section {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), 
-                url('/img/skylarkbg.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+        url('/img/skylarkbg.png');
     min-height: 80vh;
     display: flex;
     align-items: center;
     background-size: cover;
+    margin-top: 70px;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -50,15 +50,19 @@
 /* 📱 Mobile Responsive Styles (Screens 768px and smaller) */
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 50vh; /* Reduces hero section height for mobile */
-        background-size: contain; /* Prevents image from cropping on small screens */
+        min-height: 50vh;
+        /* Reduces hero section height for mobile */
+        background-size: contain;
+        /* Prevents image from cropping on small screens */
         background-position: center center;
     }
 
     /* Adjust button position so it stays inside mobile screens */
     .btn-custom {
-        margin-top: 100px !important; /* Reduces vertical gap */
-        margin-left: 15px !important;  /* Reduces horizontal shift so it doesn't overflow */
+        margin-top: 100px !important;
+        /* Reduces vertical gap */
+        margin-left: 15px !important;
+        /* Reduces horizontal shift so it doesn't overflow */
         padding: 6px 16px;
         font-size: 0.75rem;
     }
@@ -69,7 +73,8 @@
     max-width: 50%;
     text-align: left;
     padding-left: 2rem;
-    margin-top: 180px; /* Pushes the button right under the image text */
+    margin-top: 180px;
+    /* Pushes the button right under the image text */
 }
 
 /* Styled Button */
@@ -108,11 +113,14 @@
 }
 
 .btn-custom {
-    background-color: #1a1a1a; /* Dark Black/Grey */
+    background-color: #1a1a1a;
+    /* Dark Black/Grey */
     color: #ffffff;
     border: 1px solid #ffffff;
-    margin-top: 200px;   /* Controls vertical position (down) */
-    margin-left: 150px;  /* Controls horizontal position (shifts right) */
+    margin-top: 200px;
+    /* Controls vertical position (down) */
+    margin-left: 150px;
+    /* Controls horizontal position (shifts right) */
     display: inline-block;
 }
 
@@ -120,6 +128,7 @@
     background-color: #ffffff;
     color: #1a1a1a;
 }
+
 /* Hover Effects for Product Cards */
 .product-card {
     border: none;
