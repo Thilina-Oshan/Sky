@@ -1,0 +1,13 @@
+/* Card Hover Effect */
+.custom-product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Gradient Overlay for better readability */
+.gradient-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 70%);
+}
