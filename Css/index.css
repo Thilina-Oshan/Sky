@@ -66,11 +66,11 @@ main {
 .hero-content {
     max-width: 50%;
     text-align: left;
-    padding-left: 2rem;
-    margin-top: 180px;
+    padding-left: 12rem !important;
+    margin-left: 0 !important;   /* Completely remove left margin */
+    margin-top: 380px;          /* Vertical spacing from the top */
 }
 
-/* Custom Button Base */
 .btn-custom, 
 .hero-content .btn-custom {
     background-color: #1a1a1a;
@@ -82,6 +82,7 @@ main {
     border-radius: 4px;
     display: inline-block;
     transition: all 0.3s ease;
+    margin-left: 0 !important;  /* Flush the button completely to the left */
 }
 
 .btn-custom:hover, 
