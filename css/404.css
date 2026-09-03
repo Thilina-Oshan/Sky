@@ -18,8 +18,10 @@
   --pupil-size: 30px;
   --eye-size: 80px;
   --button-padding: 15px 30px;
+}
 
-  @media only screen and (max-width: 567px) {
+@media only screen and (max-width: 567px) {
+  :root {
     --fs-heading: 30px;
     --fs-text: 22px;
     --fs-button: 16px;
@@ -46,40 +48,39 @@ body {
 
 .error-page {
   margin: auto;
+}
 
-  &__heading {
-    &-title {
-      text-transform: capitalize;
-      font-size: var(--fs-heading);
-      font-weight: 500;
-      color: var(--primary-color);
-    }
+.error-page__heading-title {
+  text-transform: capitalize;
+  font-size: var(--fs-heading);
+  font-weight: 500;
+  color: var(--primary-color);
+}
 
-    &-desciption {
-      margin-top: 10px;
-      font-size: var(--fs-text);
-      font-weight: 200;
-    }
-  }
+.error-page__heading-desciption {
+  margin-top: 10px;
+  font-size: var(--fs-text);
+  font-weight: 200;
+}
 
-  &__button {
-    color: inherit;
-    text-decoration: none;
-    border: 1px solid var(--primary-color);
-    font-size: var(--fs-button);
-    font-weight: 200;
-    padding: var(--button-padding);
-    border-radius: 15px;
-    box-shadow: 0px 7px 0px -2px var(--primary-color);
-    transition: all 0.3s ease-in-out;
-    text-transform: capitalize;
+/* Customized Error Page Button (Matching Hero Button Style) */
+.error-page__button {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 12px 32px;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
-    &:hover {
-      box-shadow: none;
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-  }
+.error-page__button:hover {
+  background-color: #ea8f49;
+  color: #fafafa;
 }
 
 .eyes {
@@ -95,37 +96,35 @@ body {
   border-radius: 50%;
   display: grid;
   place-items: center;
+}
 
-  &__pupil {
-    width: var(--pupil-size);
-    height: var(--pupil-size);
-    background-color: var(--eye-pupil-color);
-    border-radius: 50%;
-    animation: movePupil 2s infinite ease-in-out;
-    transform-origin: center center;
+.eye__pupil {
+  width: var(--pupil-size);
+  height: var(--pupil-size);
+  background-color: var(--eye-pupil-color);
+  border-radius: 50%;
+  animation: movePupil 2s infinite ease-in-out;
+  transform-origin: center center;
+}
 
-    /*
-    To reverse the animation of the right eye, uncomment this.
-    */
-    // &--right {
-    // 	animation-direction: reverse;
-    // }
+/* Optional: Right eye reverse animation
+.eye__pupil--right {
+  animation-direction: reverse;
+}
+*/
+
+@keyframes movePupil {
+  0%, 100% {
+    transform: translate(0, 0);
   }
-
-  @keyframes movePupil {
-    0%,
-    100% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(-10px, -10px);
-    }
-    50% {
-      transform: translate(10px, 10px);
-    }
-    75% {
-      transform: translate(-10px, 10px);
-    }
+  25% {
+    transform: translate(-10px, -10px);
+  }
+  50% {
+    transform: translate(10px, 10px);
+  }
+  75% {
+    transform: translate(-10px, 10px);
   }
 }
 
