@@ -122,6 +122,13 @@ footer {
     margin-top: auto;
 }
 
+/* Active Navigation Link Styling */
+.navbar-nav .nav-link.active {
+    font-weight: bold !important; /* Make text bold for current page */
+    color: #000000 !important;   /* Change active link color if needed */
+    border-bottom: 2px solid #ffb900; /* Optional: Add active indicator line below text */
+}
+
 /* ==========================================
    6. MOBILE RESPONSIVENESS
    ========================================== */
