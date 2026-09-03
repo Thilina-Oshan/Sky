@@ -1,3 +1,8 @@
+body {
+    background-color: #1E2022;
+    margin: 0;
+    padding: 0;
+}
 /* Sticky & Custom Navbar */
 .navbar {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -27,7 +32,7 @@
     display: flex;
     align-items: center;
     background-size: cover;
-    margin-top: 70px;
+    margin-top: 60px;
     background-position: center;
     background-repeat: no-repeat;
 }
