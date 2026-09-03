@@ -1,9 +1,32 @@
-body {
-    background-color: #1E2022;
-    margin: 0;
-    padding: 0;
+/* ==========================================
+   1. GLOBAL & BODY LAYOUT STYLES
+   ========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
-/* Sticky & Custom Navbar */
+
+html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Clean off-white background to match light theme & white navbar */
+    background-color: #f8f9fa; 
+    color: #212529;
+}
+
+main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+/* ==========================================
+   2. NAVBAR & HEADER COMPONENTS
+   ========================================== */
 .navbar {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -18,71 +41,37 @@ body {
     top: -8px;
     right: -10px;
     background-color: #4d64e8;
-    color: white;
+    color: #ffffff;
     font-size: 0.75rem;
     padding: 2px 6px;
     border-radius: 50%;
 }
 
+/* ==========================================
+   3. HERO SECTION
+   ========================================== */
 .hero-section {
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-        url('/img/skylarkbg.png');
+                url('/img/skylarkbg.png');
     min-height: 80vh;
     display: flex;
     align-items: center;
     background-size: cover;
-    margin-top: 60px;
     background-position: center;
     background-repeat: no-repeat;
+    margin-top: 60px;
 }
 
-/* Desktop Button Styling */
-.btn-custom {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    margin-top: 40px;
-    margin-left: 80px;
-    display: inline-block;
-}
-
-.btn-custom:hover {
-    background-color: #ffffff;
-    color: #1a1a1a;
-}
-
-/* 📱 Mobile Responsive Styles (Screens 768px and smaller) */
-@media (max-width: 768px) {
-    .hero-section {
-        min-height: 50vh;
-        /* Reduces hero section height for mobile */
-        background-size: contain;
-        /* Prevents image from cropping on small screens */
-        background-position: center center;
-    }
-
-    /* Adjust button position so it stays inside mobile screens */
-    .btn-custom {
-        margin-top: 100px !important;
-        /* Reduces vertical gap */
-        margin-left: 15px !important;
-        /* Reduces horizontal shift so it doesn't overflow */
-        padding: 6px 16px;
-        font-size: 0.75rem;
-    }
-}
-
-/* Left-align the container content */
 .hero-content {
     max-width: 50%;
     text-align: left;
     padding-left: 2rem;
     margin-top: 180px;
-    /* Pushes the button right under the image text */
 }
 
-/* Styled Button */
+/* Custom Button Base */
+.btn-custom, 
 .hero-content .btn-custom {
     background-color: #1a1a1a;
     color: #ffffff;
@@ -91,50 +80,19 @@ body {
     font-size: 0.9rem;
     letter-spacing: 1.5px;
     border-radius: 4px;
+    display: inline-block;
     transition: all 0.3s ease;
 }
 
+.btn-custom:hover, 
 .hero-content .btn-custom:hover {
     background-color: #ffffff;
     color: #1a1a1a;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .hero-content {
-        max-width: 100%;
-        text-align: center;
-        padding-left: 0;
-        margin-top: 120px;
-    }
-}
-
-/* Adjust height for mobile screens */
-@media (max-width: 768px) {
-    .hero-section {
-        min-height: 60vh;
-        padding: 40px 0;
-    }
-}
-
-.btn-custom {
-    background-color: #1a1a1a;
-    /* Dark Black/Grey */
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    margin-top: 200px;
-    /* Controls vertical position (down) */
-    margin-left: 150px;
-    /* Controls horizontal position (shifts right) */
-    display: inline-block;
-}
-
-.btn-custom:hover {
-    background-color: #ffffff;
-    color: #1a1a1a;
-}
-
-/* Hover Effects for Product Cards */
+/* ==========================================
+   4. PRODUCT CARDS & BADGES
+   ========================================== */
 .product-card {
     border: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -145,8 +103,47 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Trust Badges */
 .trust-badge-icon {
     font-size: 2.5rem;
     color: #556ee6;
+}
+
+/* ==========================================
+   5. FOOTER STYLING
+   ========================================== */
+#navbar-placeholder,
+#footer-placeholder, 
+footer {
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: auto;
+}
+
+/* ==========================================
+   6. MOBILE RESPONSIVENESS
+   ========================================== */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+        background-size: cover;
+        background-position: center;
+        padding: 40px 0;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        padding-left: 0;
+        margin-top: 60px;
+    }
+
+    .btn-custom,
+    .hero-content .btn-custom {
+        margin-top: 20px !important;
+        margin-left: 0 !important;
+        padding: 8px 20px;
+        font-size: 0.8rem;
+    }
 }

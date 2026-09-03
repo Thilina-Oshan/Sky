@@ -1,0 +1,141 @@
+/* Page font setup */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Constrain ONLY the main content area, NOT the body/footer/navbar */
+.about-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 40px 0;
+  
+}
+
+.about-header {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  margin-bottom: 40px;
+}
+
+.about-header .title,
+.about-header .content {
+  flex: 1;
+}
+
+.about-header .title h3 {
+  font-size: 36px;
+}
+
+.about-header .content h5 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.about-header .content p {
+  font-size: 14px;
+}
+
+/* Custom Grid for Profile Cards */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
+  row-gap: 70px;
+  padding: 30px 0;
+}
+
+.team-grid .profile {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.team-grid .profile figure {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.team-grid .profile figure img {
+  width: 80%;
+}
+
+.team-grid .profile figure figcaption {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 12px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.team-grid .profile figure::after {
+  content: attr(data-value);
+  width: 100%;
+  transform-origin: 0 0;
+  transform: rotate(90deg);
+  position: absolute;
+  text-transform: uppercase;
+  font-size: 12px;
+  right: -92%;
+}
+
+/* Staggered offset for profile cards */
+.team-grid .profile:nth-child(2) {
+  margin-top: 70px;
+}
+.team-grid .profile:nth-child(4) {
+  margin-top: -70px;
+}
+.team-grid .profile:nth-child(6) {
+  margin-top: -70px;
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 1440px) {
+  .about-container {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .about-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-container {
+    width: 90%;
+  }
+
+  .about-header {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  .team-grid .profile:nth-child(2),
+  .team-grid .profile:nth-child(4),
+  .team-grid .profile:nth-child(6) {
+    margin-top: 50px;
+  }
+
+  .team-grid .profile:nth-child(3),
+  .team-grid .profile:nth-child(5) {
+    margin-top: 0;
+  }
+}
