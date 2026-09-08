@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Load Navbar component
-    fetch("/pages/navbar.html")
+    fetch("/includes/navbar.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error loading navbar:", error));
 
     // Load Footer component
-    fetch("/pages/footer.html")
+    fetch("/includes/footer.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("footer-placeholder").innerHTML = data;
