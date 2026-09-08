@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylark Admin — Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/admindashboard.css">
+
+
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="brand">Skylark<span class="dot">.</span> <span class="admin-tag" id="roleTag">ADMIN</span></div>
+        <div class="operator">
+            <span id="whoEmail">admin@skylark.com</span>
+            <a href="/loging/loging.html">Sign out</a>
+            <span class="avatar" id="avatarInitials">A</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Admin dashboard</h1>
+        <p id="pageSub">Manage accounts, roles, and access for staff and customers.</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="stat">1,204</div>
+                <div class="label">Customer accounts</div>
+            </div>
+            <div class="card">
+                <div class="stat">18</div>
+                <div class="label">Staff accounts</div>
+            </div>
+            <div class="card">
+                <div class="stat">3</div>
+                <div class="label">Pending invites</div>
+            </div>
+        </div>
+
+        <div class="action-row">
+            <a href="#" id="addAccountLink" class="btn-brass">+ Add account</a>
+            <a href="#" class="btn-ghost">View all accounts</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/admindashboard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylark — Join the Club</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/singup.css">
+</head>
+
+<body>
+
+    <div class="screen">
+
+        <!-- LEFT PANEL: Brand Messaging & Dynamic Quotes -->
+        <div class="panel-left">
+            <div class="wordmark">Skylark<span class="dot">.</span></div>
+
+            <div class="quote-block">
+                <span class="num" id="quoteNum">01</span>
+                <blockquote id="quoteText">Elegance isn't about being noticed, it's about being remembered.</blockquote>
+                <cite id="quoteCite">— Skylark Style Guide</cite>
+            </div>
+
+            <div class="foot-note">
+                A curated collection where style meets comfort. No trends, no noise — just timeless fashion, made to be
+                uniquely yours.
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL: Customer Sign Up Form -->
+        <div class="panel-right">
+            <div class="form-wrap">
+                <h1>Create your account</h1>
+                <p class="sub">Join Skylark to start shopping.</p>
+
+                <div class="status-banner" id="statusBanner"></div>
+
+                <form id="signupForm" novalidate>
+
+                    <!-- Name Row -->
+                    <div class="name-row">
+                        <div class="field">
+                            <label for="firstName">First name</label>
+                            <input type="text" id="firstName" class="form-control-custom" placeholder="Thumuli"
+                                autocomplete="given-name" required>
+                            <span class="error-msg" id="firstNameError"></span>
+                        </div>
+                        <div class="field">
+                            <label for="lastName">Last name</label>
+                            <input type="text" id="lastName" class="form-control-custom" placeholder="Chayathmi"
+                                autocomplete="family-name" required>
+                            <span class="error-msg" id="lastNameError"></span>
+                        </div>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control-custom" placeholder="you@example.com"
+                            autocomplete="email" required>
+                        <span class="error-msg" id="emailError"></span>
+                    </div>
+
+                    <!-- Password Field with Toggle & Strength Indicator -->
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="field-input-row">
+                            <input type="password" id="password" class="form-control-custom"
+                                placeholder="Create a password" autocomplete="new-password" required>
+                            <button type="button" class="toggle-visibility" id="toggleBtn" aria-label="Show password">
+                                <svg id="eyeOpen" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8">
+                                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg id="eyeClosed" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.8" style="display:none">
+                                    <path
+                                        d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a21.6 21.6 0 0 1 5.06-5.94M9.9 4.24A10.4 10.4 0 0 1 12 4c7 0 11 7 11 7a21.6 21.6 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="strength-row" id="strengthRow">
+                            <div class="strength-seg"></div>
+                            <div class="strength-seg"></div>
+                            <div class="strength-seg"></div>
+                            <div class="strength-seg"></div>
+                        </div>
+                        <span class="strength-label" id="strengthLabel">Use 8+ characters with a number and a
+                            symbol.</span>
+                        <span class="error-msg" id="passwordError"></span>
+                    </div>
+
+                    <!-- Terms & Conditions Checkbox -->
+                    <div class="terms-row">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">
+                            I agree to the <a href="#" class="link-quiet">Terms of Service</a> and <a href="#"
+                                class="link-quiet">Privacy Policy</a>.
+                        </label>
+                    </div>
+                    <span class="error-msg" id="termsError" style="margin-top: -1.25rem; margin-bottom: 1rem;"></span>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-brass" id="submitBtn">
+                        <span class="spinner"></span><span class="btn-text">Create account</span>
+                    </button>
+                </form>
+
+                <p class="signin-note">
+                    Already have an account? <a href="/loging/loging.html" class="link-quiet">Sign in</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript File -->
+    <script src="/assets/js/singup.js"></script>
+
+</body>
+
+</html>
