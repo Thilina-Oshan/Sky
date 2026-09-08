@@ -47,13 +47,13 @@
                     <div class="name-row">
                         <div class="field">
                             <label for="firstName">First name</label>
-                            <input type="text" id="firstName" class="form-control-custom" placeholder="Thumuli"
+                            <input type="text" id="firstName" class="form-control-custom" placeholder="john"
                                 autocomplete="given-name" required>
                             <span class="error-msg" id="firstNameError"></span>
                         </div>
                         <div class="field">
                             <label for="lastName">Last name</label>
-                            <input type="text" id="lastName" class="form-control-custom" placeholder="Chayathmini"
+                            <input type="text" id="lastName" class="form-control-custom" placeholder="doe"
                                 autocomplete="family-name" required>
                             <span class="error-msg" id="lastNameError"></span>
                         </div>
@@ -66,6 +66,48 @@
                             autocomplete="email" required>
                         <span class="error-msg" id="emailError"></span>
                     </div>
+
+                    <!-- Include intl-tel-input CSS library (Place this inside the <head> tag) -->
+                    <link rel="stylesheet"
+                        href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+
+                    <!-- Phone Number Input Field Container -->
+                    <div class="field">
+                        <label for="phone_n">Phone Number</label>
+                        <input type="tel" id="phone_n" class="form-control-custom" placeholder="77 123 4567"
+                            autocomplete="tel" required>
+                        <span class="error-msg" id="phoneError"></span>
+                    </div>
+
+                    <!-- Include intl-tel-input JavaScript library -->
+                    <script
+                        src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+
+                    <script>
+                        // Get reference to the phone input element
+                        const phoneInput = document.querySelector("#phone_n");
+
+                        // Initialize the intl-tel-input library with configuration options
+                        const iti = window.intlTelInput(phoneInput, {
+                            initialCountry: "lk", // Set Sri Lanka (+94) as the default country
+                            separateDialCode: true, // Display the country code outside the input field next to the flag
+                            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js" // Load utility script for number formatting and validation
+                        });
+
+                        // Listen for user typing inside the phone number input
+                        phoneInput.addEventListener('input', function () {
+                            let value = phoneInput.value.trim();
+
+                            // Automatically set country to Sri Lanka (+94) if the number starts with "0"
+                            if (value.startsWith("0")) {
+                                iti.setCountry("lk");
+                            }
+                            // Handled automatically by the library if the user enters a "+" prefix
+                            else if (value.startsWith("+")) {
+                                // Library auto-detects country code based on full international number
+                            }
+                        });
+                    </script>
 
                     <!-- Password Field with Toggle & Strength Indicator -->
                     <div class="field">

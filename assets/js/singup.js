@@ -13,19 +13,19 @@ const quoteCite = document.getElementById('quoteCite');
 // Function to rotate quotes every 5 seconds
 function rotateQuotes() {
     if (!quoteNum || !quoteText || !quoteCite) return;
-    
+
     qIndex = (qIndex + 1) % quotes.length;
-    
+
     // Smooth transition fade out and fade in
     quoteText.style.opacity = '0';
     quoteNum.style.opacity = '0';
     quoteCite.style.opacity = '0';
-    
+
     setTimeout(() => {
         quoteNum.textContent = quotes[qIndex].num;
         quoteText.textContent = quotes[qIndex].text;
         quoteCite.textContent = quotes[qIndex].cite;
-        
+
         quoteText.style.opacity = '1';
         quoteNum.style.opacity = '1';
         quoteCite.style.opacity = '1';
@@ -69,11 +69,11 @@ function scorePassword(pw) {
 passwordInput.addEventListener('input', () => {
     const pw = passwordInput.value;
     const score = pw.length === 0 ? 0 : Math.max(1, scorePassword(pw));
-    
+
     segs.forEach((seg, i) => {
         seg.style.background = i < score ? strengthColors[score - 1] : '#E4DFD3';
     });
-    
+
     strengthLabel.textContent = pw.length === 0
         ? 'Use 8+ characters with a number and a symbol.'
         : strengthText[score - 1] + ' password.';
@@ -183,4 +183,28 @@ form.addEventListener('submit', (e) => {
     setTimeout(() => {
         window.location.href = `dashboard.html?role=customer&email=${encodeURIComponent(fields.email.input.value)}`;
     }, 1200);
+});
+
+// Get reference to the phone input element
+const phoneInput = document.querySelector("#phone_n");
+
+// Initialize the intl-tel-input library with configuration options
+const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "lk", // Set Sri Lanka (+94) as the default country
+    separateDialCode: true, // Display the country code outside the input field next to the flag
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js" // Load utility script for number formatting and validation
+});
+
+// Listen for user typing inside the phone number input
+phoneInput.addEventListener('input', function () {
+    let value = phoneInput.value.trim();
+
+    // Automatically set country to Sri Lanka (+94) if the number starts with "0"
+    if (value.startsWith("0")) {
+        iti.setCountry("lk");
+    }
+    // Handled automatically by the library if the user enters a "+" prefix
+    else if (value.startsWith("+")) {
+        // Library auto-detects country code based on full international number
+    }
 });
