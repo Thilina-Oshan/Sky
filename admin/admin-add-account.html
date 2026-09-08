@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skylark Admin — Add account</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/adminaddaccounts.css">
+
+
+</head>
+
+<body>
+
+    <div class="topbar">
+        <div class="brand">Skylark<span class="dot">.</span> <span class="admin-tag" id="operatorRoleTag">ADMIN</span>
+        </div>
+        <div class="operator">
+            <span id="operatorEmail">Signed in</span>
+            <span class="avatar" id="operatorAvatar">A</span>
+        </div>
+    </div>
+
+    <div class="page-head">
+        <div class="breadcrumb-row"><a href="/admin/admindashboard.html">Accounts</a> / New account</div>
+        <h1>Add a new account</h1>
+        <p>Create a login for a staff member and set what they're allowed to do. They'll get an email to finish setup
+            unless you set a password yourself below.</p>
+    </div>
+
+    <div class="content">
+        <div class="status-banner" id="statusBanner"></div>
+        <div class="role-gate-note" id="roleGateNote" style="display:none;"></div>
+
+        <form id="adminForm" novalidate>
+            <div class="panel">
+
+                <!-- Identity -->
+                <div class="panel-section">
+                    <div class="section-label">Identity</div>
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="firstName">First name</label>
+                            <input type="text" id="firstName" class="form-control-custom" placeholder="Sadun" required>
+                            <span class="error-msg" id="firstNameError"></span>
+                        </div>
+                        <div class="field">
+                            <label for="lastName">Last name</label>
+                            <input type="text" id="lastName" class="form-control-custom" placeholder="De Mel" required>
+                            <span class="error-msg" id="lastNameError"></span>
+                        </div>
+                        <div class="field">
+                            <label for="email">Work email</label>
+                            <input type="email" id="email" class="form-control-custom" placeholder="sadun@skylark.com"
+                                required>
+                            <span class="error-msg" id="emailError"></span>
+                        </div>
+                        <div class="field">
+                            <label for="employeeId">Employee ID <span class="hint">optional</span></label>
+                            <input type="text" id="employeeId" class="form-control-custom" placeholder="EMP-0142">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Role -->
+                <div class="panel-section">
+                    <div class="section-label">Role</div>
+                    <div class="role-grid" id="roleGrid">
+                        <label class="role-card" data-role="super_admin">
+                            <input type="radio" name="role" value="super_admin">
+                            <div class="role-name">Super Admin</div>
+                            <div class="role-desc">Full control, including adding other admins.</div>
+                        </label>
+                        <label class="role-card" data-role="admin">
+                            <input type="radio" name="role" value="admin">
+                            <div class="role-name">Admin</div>
+                            <div class="role-desc">Manages accounts and content, no billing or admin creation.</div>
+                        </label>
+                        <label class="role-card selected" data-role="editor">
+                            <input type="radio" name="role" value="editor" checked>
+                            <div class="role-name">Editor</div>
+                            <div class="role-desc">Can manage content and users, no billing access.</div>
+                        </label>
+                        <label class="role-card" data-role="viewer">
+                            <input type="radio" name="role" value="viewer">
+                            <div class="role-name">Viewer</div>
+                            <div class="role-desc">Read-only access to dashboards and reports.</div>
+                        </label>
+                    </div>
+                    <span class="error-msg" id="roleError"></span>
+                </div>
+
+                <!-- Permissions -->
+                <div class="panel-section">
+                    <div class="section-label">Additional permissions</div>
+                    <div class="perm-list">
+                        <div class="perm-row">
+                            <div class="perm-copy">
+                                <div class="perm-name">Export customer data</div>
+                                <div class="perm-desc">Allow downloading customer lists and usage reports as CSV.</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="permExport">
+                                <span class="track"></span>
+                            </label>
+                        </div>
+                        <div class="perm-row">
+                            <div class="perm-copy">
+                                <div class="perm-name">Impersonate customer accounts</div>
+                                <div class="perm-desc">Log in as a customer to troubleshoot their account directly.
+                                </div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="permImpersonate">
+                                <span class="track"></span>
+                            </label>
+                        </div>
+                        <div class="perm-row">
+                            <div class="perm-copy">
+                                <div class="perm-name">Two-factor required</div>
+                                <div class="perm-desc">Require this account to set up 2FA before first login.</div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="perm2fa" checked>
+                                <span class="track"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Access setup -->
+                <div class="panel-section">
+                    <div class="section-label">Access setup</div>
+                    <div class="method-toggle" id="methodToggle">
+                        <button type="button" class="active" data-method="invite">Send email invite</button>
+                        <button type="button" data-method="manual">Set password now</button>
+                    </div>
+
+                    <div class="field-grid password-fields" id="passwordFields">
+                        <div class="field">
+                            <label for="tempPassword">Temporary password</label>
+                            <input type="text" id="tempPassword" class="form-control-custom"
+                                placeholder="Assign a temporary password">
+                            <span class="error-msg" id="tempPasswordError"></span>
+                        </div>
+                        <div class="field">
+                            <label>&nbsp;</label>
+                            <button type="button" class="btn-ghost" id="generateBtn" style="width:100%;">Generate secure
+                                password</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions-bar">
+                    <span class="note">Account will be created immediately; the invite or password is sent
+                        separately.</span>
+                    <div class="btn-group">
+                        <button type="button" class="btn-ghost" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-brass" id="submitBtn">
+                            <span class="spinner"></span><span class="btn-text">Create account</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/adminaddaccount.js"></script>
+</body>
+
+</html>
