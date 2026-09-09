@@ -1,13 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Load Navbar component
+    // Load Navbar component into the DOM
     fetch("/includes/navbar.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+            
+            // Initialize dropdown event listeners after navbar finishes loading
+            initNavbarDropdowns();
         })
         .catch(error => console.error("Error loading navbar:", error));
 
-    // Load Footer component
+    // Load Footer component into the DOM
     fetch("/includes/footer.html")
         .then(response => response.text())
         .then(data => {
@@ -16,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error loading footer:", error));
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+// Dropdown Functionality Logic
+function initNavbarDropdowns() {
+    // Select all top-level dropdowns and nested sub-dropdown containers
     const dropdowns = document.querySelectorAll('.navbar-nav .dropdown, .dropdown-menu .dropend');
 
     dropdowns.forEach(dropdown => {
@@ -33,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (window.innerWidth >= 992) {
                 clearTimeout(timeoutId);
                 
-                // Sibling sub-menus වහන්න
+                // Close any open sibling sub-menus on the same level
                 const siblings = dropdown.parentElement.querySelectorAll(':scope > .dropend > .dropdown-menu');
                 siblings.forEach(sibMenu => {
                     if (sibMenu !== menu) {
@@ -41,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
+                // Show and animate current dropdown menu
                 menu.classList.add('show', 'animate-in');
                 menu.classList.remove('animate-out');
             }
@@ -51,38 +57,39 @@ document.addEventListener('DOMContentLoaded', function () {
                 menu.classList.add('animate-out');
                 menu.classList.remove('animate-in');
 
+                // Delay removal of visibility class until exit animation completes
                 timeoutId = setTimeout(() => {
                     if (menu.classList.contains('animate-out')) {
                         menu.classList.remove('show', 'animate-out');
                     }
-                }, 200);
+                }, 200); // Matches CSS transition duration (ms)
             }
         });
 
         // ==========================================
-        // 2. MOBILE VIEW (Click/Tap Behavior)
+        // 2. MOBILE VIEW (Click / Tap Behavior)
         // ==========================================
         if (toggleBtn) {
             toggleBtn.addEventListener('click', function (e) {
                 if (window.innerWidth < 992) {
-                    // Sub-menu එකක් තියෙන Link එකක් නම් (Men's / Women's) Link එකට යන්නේ නැතුව Dropdown එක Open කරන්න
-                    if (dropdown.classList.contains('dropend') || dropdown.classList.contains('dropdown')) {
-                        e.preventDefault();
-                        e.stopPropagation();
+                    // Prevent page navigation and stop event bubbling
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                        // වෙනත් Open වී ඇති Sub-menus වහන්න
-                        const openSiblings = dropdown.parentElement.querySelectorAll('.dropdown-menu.show');
-                        openSiblings.forEach(sib => {
-                            if (sib !== menu && !sib.contains(menu)) {
-                                sib.classList.remove('show');
-                            }
-                        });
+                    // Close other currently open sibling dropdown menus
+                    const currentUl = dropdown.parentElement;
+                    const openSiblings = currentUl.querySelectorAll(':scope > .dropend > .dropdown-menu.show, :scope > .dropdown > .dropdown-menu.show');
+                    
+                    openSiblings.forEach(sib => {
+                        if (sib !== menu) {
+                            sib.classList.remove('show');
+                        }
+                    });
 
-                        // Current Dropdown Toggle කරන්න
-                        menu.classList.toggle('show');
-                    }
+                    // Toggle visibility of the current clicked sub-menu
+                    menu.classList.toggle('show');
                 }
             });
         }
     });
-});
+}

@@ -31,7 +31,6 @@ main {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Base Dropdown Menu Styling */
 .dropdown-menu {
     border: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -50,27 +49,22 @@ main {
     color: #4d64e8;
 }
 
-/* Nested Dropdown Positioning */
+/* Position child dropdowns correctly */
 .dropdown-menu .dropend {
     position: relative;
 }
 
-.dropdown-menu .dropend > .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -8px;
-    margin-left: 2px;
-}
-
-/* Desktop Hover and Display Logic */
+/* ==========================================
+   DESKTOP HOVER (992px & Above)
+   ========================================== */
 @media (min-width: 992px) {
-    /* Main Dropdown Hover Show */
-    .navbar-nav .dropdown:hover > .dropdown-menu,
-    .dropdown-menu .dropend:hover > .dropdown-menu {
-        display: block !important;
+    .dropdown-menu .dropend > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -8px;
+        margin-left: 2px;
     }
 
-    /* Animation Classes */
     .dropdown-menu.animate-in {
         display: block !important;
         animation: fadeInSlideUp 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -82,20 +76,29 @@ main {
 }
 
 /* ==========================================
-   MOBILE DROPDOWN FIXES (Below 992px)
+   MOBILE DROPDOWN STYLES (Below 992px)
    ========================================== */
 @media (max-width: 991px) {
-    /* Mobile වලදී Sub-dropdowns දකුණට යන්නේ නැතුව පහලට Align කිරීම */
-    .dropdown-menu .dropend > .dropdown-menu {
-        top: 0;
-        left: 0;
-        margin-top: 0;
-        margin-left: 15px; /* Sub-categories ටිකක් ඇතුලට offset කිරීම */
-        border-left: 2px solid #4d64e8; /* Categories වෙන් කර හඳුනාගැනීමට */
+    /* Dynamic height responsive setup */
+    .dropdown-menu {
+        border: none;
         box-shadow: none;
-        background-color: #f8f9fa;
+        padding-left: 10px;
     }
 
+    /* Sub-dropdowns positioning for Mobile */
+    .dropdown-menu .dropend > .dropdown-menu {
+        position: static !important;
+        transform: none !important;
+        float: none;
+        display: none;
+        margin-left: 15px;
+        border-left: 2px solid #4d64e8; /* Indigo accent line for sub categories */
+        background-color: #f8f9fa;
+        border-radius: 0;
+    }
+
+    /* Force show on click in mobile */
     .dropdown-menu.show {
         display: block !important;
     }
@@ -123,6 +126,7 @@ main {
         transform: translateY(10px);
     }
 }
+
 .cart-icon-container {
     position: relative;
     display: inline-block;
