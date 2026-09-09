@@ -10,13 +10,11 @@ const quoteNum = document.getElementById('quoteNum');
 const quoteText = document.getElementById('quoteText');
 const quoteCite = document.getElementById('quoteCite');
 
-// Function to rotate quotes every 5 seconds
 function rotateQuotes() {
     if (!quoteNum || !quoteText || !quoteCite) return;
 
     qIndex = (qIndex + 1) % quotes.length;
 
-    // Smooth transition fade out and fade in
     quoteText.style.opacity = '0';
     quoteNum.style.opacity = '0';
     quoteCite.style.opacity = '0';
@@ -32,7 +30,6 @@ function rotateQuotes() {
     }, 400);
 }
 
-// Start auto-rotating quotes every 5 seconds
 setInterval(rotateQuotes, 5000);
 
 
@@ -92,6 +89,7 @@ function isValidEmail(value) {
 }
 
 function setError(input, errorEl, message) {
+    if (!input || !errorEl) return;
     if (message) {
         input.classList.add('is-invalid');
         input.classList.remove('is-valid');
@@ -108,12 +106,27 @@ const fields = {
     email: { input: document.getElementById('email'), error: document.getElementById('emailError') },
 };
 
-// Real-time email validation listener
 fields.email.input.addEventListener('input', () => {
     if (fields.email.input.value && !isValidEmail(fields.email.input.value)) {
         setError(fields.email.input, fields.email.error, 'Enter a valid email address.');
     } else {
         setError(fields.email.input, fields.email.error, '');
+    }
+});
+
+
+// ---- International Phone Input Initialization ----
+const phoneInput = document.querySelector("#phone_n");
+const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "lk",
+    separateDialCode: true,
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
+});
+
+phoneInput.addEventListener('input', function () {
+    let value = phoneInput.value.trim();
+    if (value.startsWith("0")) {
+        iti.setCountry("lk");
     }
 });
 
@@ -127,7 +140,7 @@ const termsError = document.getElementById('termsError');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    statusBanner.classList.remove('show');
+    if (statusBanner) statusBanner.classList.remove('show');
     let hasError = false;
 
     // Validate first name
@@ -174,37 +187,11 @@ form.addEventListener('submit', (e) => {
 
     if (hasError) return;
 
-    // Set submit button loading state
     submitBtn.classList.add('loading');
     submitBtn.disabled = true;
     submitBtn.querySelector('.btn-text').textContent = 'Creating account...';
 
-    // Simulate account creation and redirect to store dashboard
     setTimeout(() => {
         window.location.href = `dashboard.html?role=customer&email=${encodeURIComponent(fields.email.input.value)}`;
     }, 1200);
-});
-
-// Get reference to the phone input element
-const phoneInput = document.querySelector("#phone_n");
-
-// Initialize the intl-tel-input library with configuration options
-const iti = window.intlTelInput(phoneInput, {
-    initialCountry: "lk", // Set Sri Lanka (+94) as the default country
-    separateDialCode: true, // Display the country code outside the input field next to the flag
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js" // Load utility script for number formatting and validation
-});
-
-// Listen for user typing inside the phone number input
-phoneInput.addEventListener('input', function () {
-    let value = phoneInput.value.trim();
-
-    // Automatically set country to Sri Lanka (+94) if the number starts with "0"
-    if (value.startsWith("0")) {
-        iti.setCountry("lk");
-    }
-    // Handled automatically by the library if the user enters a "+" prefix
-    else if (value.startsWith("+")) {
-        // Library auto-detects country code based on full international number
-    }
 });
