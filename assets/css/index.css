@@ -31,24 +31,78 @@ main {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Sub-dropdown position and display logic */
+/* Base Dropdown Menu Styling */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 8px 0;
+}
+
+.dropdown-item {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #4d64e8;
+}
+
+/* Nested Dropdown Positioning */
 .dropdown-menu .dropend {
     position: relative;
 }
 
-.dropdown-menu .dropend .dropdown-menu {
+.dropdown-menu .dropend > .dropdown-menu {
     top: 0;
     left: 100%;
-    margin-top: -1px;
+    margin-top: -8px;
+    margin-left: 2px;
 }
 
-/* Hover over desktop screens to open sub-menus easily */
+/* Desktop Hover and Display Logic */
 @media (min-width: 992px) {
+    /* Main Dropdown Hover Show */
+    .navbar-nav .dropdown:hover > .dropdown-menu,
     .dropdown-menu .dropend:hover > .dropdown-menu {
-        display: block;
+        display: block !important;
+    }
+
+    /* Animation Classes */
+    .dropdown-menu.animate-in {
+        display: block !important;
+        animation: fadeInSlideUp 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    .dropdown-menu.animate-out {
+        animation: fadeOutSlideDown 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
 }
 
+/* Keyframe Animations */
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOutSlideDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
 .cart-icon-container {
     position: relative;
     display: inline-block;

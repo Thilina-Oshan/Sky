@@ -10,19 +10,19 @@
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold">
                 <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
                 
-                <!-- Collection Multi-Level Dropdown -->
+                <!-- Collection Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/pages/collection.html" id="collectionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Collection
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="collectionDropdown">
                         
-                        <!-- Men's Nested Dropdown -->
+                        <!-- Men's Sub-Dropdown (Removed data-bs-toggle) -->
                         <li class="dropend">
-                            <a class="dropdown-item dropdown-toggle" href="/pages/collection.html?category=mens" id="mensDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="dropdown-item dropdown-toggle d-flex justify-content-between align-items-center" href="/pages/collection.html?category=mens">
                                 Men's
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="mensDropdown">
+                            <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/pages/collection.html?category=mens-new-arrivals">New Arrivals</a></li>
                                 <li><a class="dropdown-item" href="/pages/collection.html?category=mens-essentials">Essentials</a></li>
                                 <li><a class="dropdown-item" href="/pages/collection.html?category=mens-premium">Premium Collection</a></li>
@@ -31,12 +31,12 @@
                             </ul>
                         </li>
 
-                        <!-- Women's Nested Dropdown -->
+                        <!-- Women's Sub-Dropdown (Removed data-bs-toggle) -->
                         <li class="dropend">
-                            <a class="dropdown-item dropdown-toggle" href="/pages/collection.html?category=womens" id="womensDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="dropdown-item dropdown-toggle d-flex justify-content-between align-items-center" href="/pages/collection.html?category=womens">
                                 Women's
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="womensDropdown">
+                            <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/pages/collection.html?category=womens-new-arrivals">New Arrivals</a></li>
                                 <li><a class="dropdown-item" href="/pages/collection.html?category=womens-best-sellers">Best Sellers</a></li>
                                 <li><a class="dropdown-item" href="/pages/collection.html?category=womens-athleisure">Athleisure</a></li>
