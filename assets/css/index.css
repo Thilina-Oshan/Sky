@@ -31,6 +31,24 @@ main {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Sub-dropdown position and display logic */
+.dropdown-menu .dropend {
+    position: relative;
+}
+
+.dropdown-menu .dropend .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+/* Hover over desktop screens to open sub-menus easily */
+@media (min-width: 992px) {
+    .dropdown-menu .dropend:hover > .dropdown-menu {
+        display: block;
+    }
+}
+
 .cart-icon-container {
     position: relative;
     display: inline-block;

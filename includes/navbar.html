@@ -9,7 +9,47 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold">
                 <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pages/collection.html">Collection</a></li>
+                
+                <!-- Collection Multi-Level Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/pages/collection.html" id="collectionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Collection
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="collectionDropdown">
+                        
+                        <!-- Men's Nested Dropdown -->
+                        <li class="dropend">
+                            <a class="dropdown-item dropdown-toggle" href="/pages/collection.html?category=mens" id="mensDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Men's
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="mensDropdown">
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=mens-new-arrivals">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=mens-essentials">Essentials</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=mens-premium">Premium Collection</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=mens-oversize">Oversize Collection</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=mens-seamless">Seamless Collection</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Women's Nested Dropdown -->
+                        <li class="dropend">
+                            <a class="dropdown-item dropdown-toggle" href="/pages/collection.html?category=womens" id="womensDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Women's
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="womensDropdown">
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=womens-new-arrivals">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=womens-best-sellers">Best Sellers</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=womens-athleisure">Athleisure</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=womens-essentials">Essentials</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=womens-seamless">Seamless</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=womens-luxe-premium">Luxe Premium</a></li>
+                                <li><a class="dropdown-item" href="/pages/collection.html?category=womens-airsculpt">Airsculpt</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+
                 <li class="nav-item"><a class="nav-link" href="/pages/about.html">About</a></li>
             </ul>
 
@@ -28,7 +68,6 @@
                     <span class="cart-badge" id="cartCount">0</span>
                 </a>
 
-                <!-- Added Login Button -->
                 <a href="/loging/loging.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 ms-2">Login</a>
             </div>
         </div>
