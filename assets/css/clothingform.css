@@ -65,3 +65,9 @@ body {
 #formSuccessAlert {
     display: none;
 }
+
+.product-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
