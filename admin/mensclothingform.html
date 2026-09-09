@@ -205,6 +205,63 @@
             </div>
 
         </div>
+
+        <!-- SEARCH BAR & TABLE SECTION -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card p-4 shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="h4 mb-0 fw-bold">Existing Products List</h2>
+                        <!-- Search Bar -->
+                        <div class="input-group style-search" style="max-width: 300px;">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search products..." aria-label="Search products">
+                            <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- Products Table -->
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">SKU</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col" class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productTableBody">
+                                <tr>
+                                    <td>MEN-TOP-0001</td>
+                                    <td>Classic Crew Neck T-Shirt</td>
+                                    <td>Tops</td>
+                                    <td>Rs 2,500</td>
+                                    <td>50</td>
+                                    <td class="text-end">
+                                        <button class="btn btn-sm btn-outline-secondary me-1">Edit</button>
+                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MEN-BOT-0002</td>
+                                    <td>Slim Fit Denim Jeans</td>
+                                    <td>Bottoms</td>
+                                    <td>Rs 4,500</td>
+                                    <td>20</td>
+                                    <td class="text-end">
+                                        <button class="btn btn-sm btn-outline-secondary me-1">Edit</button>
+                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Footer Placeholder -->

@@ -1,0 +1,77 @@
+body {
+    background: #f7f7f8;
+}
+
+.summary-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 1.25rem 1.5rem;
+    height: 100%;
+}
+
+.summary-card .summary-label {
+    color: #777;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.summary-card .summary-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.summary-card.alert-border {
+    border-left: 4px solid #dc3545;
+}
+
+.summary-card.warn-border {
+    border-left: 4px solid #f0ad4e;
+}
+
+.filter-bar {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 1rem 1.25rem;
+}
+
+.table-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+#stockTable thead th {
+    white-space: nowrap;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #666;
+    border-bottom-width: 1px;
+}
+
+#stockTable tbody tr.row-out {
+    background-color: #fdeeee;
+}
+
+#stockTable tbody tr.row-low {
+    background-color: #fff8e8;
+}
+
+.qty-input {
+    width: 80px;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.6em;
+}
+
+.no-results-row td {
+    text-align: center;
+    color: #999;
+    padding: 2rem 0;
+}
