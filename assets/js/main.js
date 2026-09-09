@@ -21,16 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     dropdowns.forEach(dropdown => {
         const menu = dropdown.querySelector(':scope > .dropdown-menu');
+        const toggleBtn = dropdown.querySelector(':scope > a');
         let timeoutId = null;
 
         if (!menu) return;
 
-        // Mouse Enter (Desktop)
+        // ==========================================
+        // 1. DESKTOP VIEW (Hover Behavior)
+        // ==========================================
         dropdown.addEventListener('mouseenter', function () {
             if (window.innerWidth >= 992) {
                 clearTimeout(timeoutId);
                 
-                // Close sibling open menus
+                // Sibling sub-menus වහන්න
                 const siblings = dropdown.parentElement.querySelectorAll(':scope > .dropend > .dropdown-menu');
                 siblings.forEach(sibMenu => {
                     if (sibMenu !== menu) {
@@ -43,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Mouse Leave (Desktop)
         dropdown.addEventListener('mouseleave', function () {
             if (window.innerWidth >= 992) {
                 menu.classList.add('animate-out');
@@ -56,6 +58,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 200);
             }
         });
+
+        // ==========================================
+        // 2. MOBILE VIEW (Click/Tap Behavior)
+        // ==========================================
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function (e) {
+                if (window.innerWidth < 992) {
+                    // Sub-menu එකක් තියෙන Link එකක් නම් (Men's / Women's) Link එකට යන්නේ නැතුව Dropdown එක Open කරන්න
+                    if (dropdown.classList.contains('dropend') || dropdown.classList.contains('dropdown')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // වෙනත් Open වී ඇති Sub-menus වහන්න
+                        const openSiblings = dropdown.parentElement.querySelectorAll('.dropdown-menu.show');
+                        openSiblings.forEach(sib => {
+                            if (sib !== menu && !sib.contains(menu)) {
+                                sib.classList.remove('show');
+                            }
+                        });
+
+                        // Current Dropdown Toggle කරන්න
+                        menu.classList.toggle('show');
+                    }
+                }
+            });
+        }
     });
 });
-

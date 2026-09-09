@@ -81,6 +81,26 @@ main {
     }
 }
 
+/* ==========================================
+   MOBILE DROPDOWN FIXES (Below 992px)
+   ========================================== */
+@media (max-width: 991px) {
+    /* Mobile වලදී Sub-dropdowns දකුණට යන්නේ නැතුව පහලට Align කිරීම */
+    .dropdown-menu .dropend > .dropdown-menu {
+        top: 0;
+        left: 0;
+        margin-top: 0;
+        margin-left: 15px; /* Sub-categories ටිකක් ඇතුලට offset කිරීම */
+        border-left: 2px solid #4d64e8; /* Categories වෙන් කර හඳුනාගැනීමට */
+        box-shadow: none;
+        background-color: #f8f9fa;
+    }
+
+    .dropdown-menu.show {
+        display: block !important;
+    }
+}
+
 /* Keyframe Animations */
 @keyframes fadeInSlideUp {
     0% {
