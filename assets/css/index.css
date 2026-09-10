@@ -1,11 +1,14 @@
 /* ==========================================
    1. GLOBAL & BODY LAYOUT STYLES
    ========================================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
@@ -15,7 +18,7 @@ html, body {
     display: flex;
     flex-direction: column;
     /* Clean off-white background to match light theme & white navbar */
-    background-color: #f8f9fa; 
+    background-color: #f8f9fa;
     color: #212529;
 }
 
@@ -55,7 +58,7 @@ main {
     position: relative;
 }
 
-.dropdown-menu .dropend > .dropdown-menu {
+.dropdown-menu .dropend>.dropdown-menu {
     top: 0;
     left: 100%;
     margin-top: -8px;
@@ -64,9 +67,10 @@ main {
 
 /* Desktop Hover and Display Logic */
 @media (min-width: 992px) {
+
     /* Main Dropdown Hover Show */
-    .navbar-nav .dropdown:hover > .dropdown-menu,
-    .dropdown-menu .dropend:hover > .dropdown-menu {
+    .navbar-nav .dropdown:hover>.dropdown-menu,
+    .dropdown-menu .dropend:hover>.dropdown-menu {
         display: block !important;
     }
 
@@ -85,13 +89,16 @@ main {
    MOBILE DROPDOWN FIXES (Below 992px)
    ========================================== */
 @media (max-width: 991px) {
+
     /* Mobile වලදී Sub-dropdowns දකුණට යන්නේ නැතුව පහලට Align කිරීම */
-    .dropdown-menu .dropend > .dropdown-menu {
+    .dropdown-menu .dropend>.dropdown-menu {
         top: 0;
         left: 0;
         margin-top: 0;
-        margin-left: 15px; /* Sub-categories ටිකක් ඇතුලට offset කිරීම */
-        border-left: 2px solid #4d64e8; /* Categories වෙන් කර හඳුනාගැනීමට */
+        margin-left: 15px;
+        /* Sub-categories ටිකක් ඇතුලට offset කිරීම */
+        border-left: 2px solid #4d64e8;
+        /* Categories වෙන් කර හඳුනාගැනීමට */
         box-shadow: none;
         background-color: #f8f9fa;
     }
@@ -107,6 +114,7 @@ main {
         opacity: 0;
         transform: translateY(10px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -118,11 +126,13 @@ main {
         opacity: 1;
         transform: translateY(0);
     }
+
     100% {
         opacity: 0;
         transform: translateY(10px);
     }
 }
+
 .cart-icon-container {
     position: relative;
     display: inline-block;
@@ -140,47 +150,178 @@ main {
 }
 
 /* ==========================================
-   3. HERO SECTION
+   3. HERO SECTION (text left, image right)
    ========================================== */
 .hero-section {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-                url('/assets/img/skylarkbg.png');
+    background-color: #f0ede7;
     min-height: 80vh;
     display: flex;
     align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     margin-top: 60px;
+    overflow: hidden;
+}
+
+.title-container {
+    /* Centers both headings horizontally */
+    text-align: center;
+
+}
+
+.sub-heading {
+    /* Removes default margin and pulls the sub-heading closer to SKYLARK */
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    /* Adds clean spacing between the letters of Trinity */
 }
 
 .hero-content {
-    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: left;
-    padding-left: 12rem !important;
-    margin-left: 0 !important;   /* Completely remove left margin */
-    margin-top: 380px;          /* Vertical spacing from the top */
+    gap: 14px;
 }
 
-.btn-custom, 
+.hero-logo i {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+}
+
+.hero-heading {
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: 10px;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.hero-tagline {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: #a9855c;
+    font-weight: 600;
+    margin: 0;
+}
+
+.hero-divider {
+    width: 180px;
+    height: 1px;
+    background-color: #1a1a1a;
+    opacity: 0.4;
+    margin: 6px 0;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #333;
+    max-width: 400px;
+    margin: 0 0 6px 0;
+}
+
+.btn-custom,
 .hero-content .btn-custom {
     background-color: #1a1a1a;
     color: #ffffff;
-    border: 1px solid #ffffff;
+    border: 1px solid #1a1a1a;
     padding: 12px 32px;
     font-size: 0.9rem;
     letter-spacing: 1.5px;
     border-radius: 4px;
     display: inline-block;
     transition: all 0.3s ease;
-    margin-left: 0 !important;  /* Flush the button completely to the left */
+    margin-top: 4px;
 }
 
-.btn-custom:hover, 
+.btn-custom:hover,
 .hero-content .btn-custom:hover {
-    background-color: #ffffff;
+    background-color: transparent;
     color: #1a1a1a;
+}
+
+/* Image column */
+.hero-image-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ---- Tablet ---- */
+@media (max-width: 991px) {
+    .hero-heading {
+        font-size: 2.4rem;
+        letter-spacing: 6px;
+    }
+
+    .hero-image {
+        max-width: 380px;
+    }
+}
+
+/* ---- Mobile: stack image below text ---- */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: auto;
+        padding: 50px 0;
+    }
+
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .hero-heading {
+        font-size: 2rem;
+        letter-spacing: 4px;
+    }
+
+    .hero-tagline {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-divider {
+        margin: 6px auto;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        max-width: 300px;
+        margin-top: 20px;
+    }
+}
+
+/* ---- Small phones ---- */
+@media (max-width: 480px) {
+    .hero-heading {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-image {
+        max-width: 240px;
+    }
+
+    .btn-custom {
+        width: 80%;
+    }
 }
 
 /* ==========================================
@@ -205,7 +346,7 @@ main {
    5. FOOTER STYLING
    ========================================== */
 #navbar-placeholder,
-#footer-placeholder, 
+#footer-placeholder,
 footer {
     width: 100% !important;
     max-width: 100vw !important;
@@ -216,9 +357,12 @@ footer {
 
 /* Active Navigation Link Styling */
 .navbar-nav .nav-link.active {
-    font-weight: bold !important; /* Make text bold for current page */
-    color: #000000 !important;   /* Change active link color if needed */
-    border-bottom: 2px solid #ffb900; /* Optional: Add active indicator line below text */
+    font-weight: bold !important;
+    /* Make text bold for current page */
+    color: #000000 !important;
+    /* Change active link color if needed */
+    border-bottom: 2px solid #ffb900;
+    /* Optional: Add active indicator line below text */
 }
 
 /* ==========================================
