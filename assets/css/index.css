@@ -365,6 +365,11 @@ footer {
     /* Optional: Add active indicator line below text */
 }
 
+.logo-img {
+  height: 40px; /* Logo එකේ උස (අවශ්‍ය පරිදි වෙනස් කරන්න) */
+  width: auto;
+}
+
 /* ==========================================
    6. MOBILE RESPONSIVENESS
    ========================================== */
