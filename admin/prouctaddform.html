@@ -23,8 +23,8 @@
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold mb-1">Add Men's Collection Product</h1>
-                <p class="text-muted mb-0">Fill in the details below to add a new item to the men's collection.</p>
+                <h1 class="fw-bold mb-1">Choose Collection Men's & Women's</h1>
+                <p class="text-muted mb-0">Fill in the details below to add a new item to the collection</p>
             </div>
             <a href="/menscollection.html" class="btn btn-outline-secondary btn-sm">Back to Collection</a>
         </div>
@@ -51,40 +51,32 @@
                             <div class="invalid-feedback">Please enter a product name.</div>
                         </div>
 
-                        <div class="row">
-                            <!-- Primary Category Selection -->
-                            <div class="col-md-6 mb-3">
-                                <label for="productCategory" class="form-label">Category <span
-                                        class="required-flag">*</span></label>
-                                <select class="form-select" id="productCategory" required>
-                                    <option value="" selected disabled>Choose a category</option>
-                                    <option value="Tops">Tops</option>
-                                    <option value="Bottoms">Bottoms</option>
-                                    <option value="Outerwear">Outerwear</option>
-                                    <option value="Activewear">Activewear</option>
-                                    <option value="Footwear & Accessories">Footwear &amp; Accessories</option>
-                                    <option value="Formalwear">Formalwear</option>
-                                </select>
-                                <div class="invalid-feedback">Please select a category.</div>
-                            </div>
-
-                            <!-- Category ID / Subcategory Dynamic Dropdown -->
-                            <div class="col-md-6 mb-3">
-                                <label for="productCategory" class="form-label">Category <span
-                                        class="required-flag">*</span></label>
-                                <select class="form-select" id="productCategory" required>
-                                    <option value="" selected disabled>Category ID / Subcategory</option>
-                                    <option value="Tops">Tops</option>
-                                    <option value="Bottoms">Bottoms</option>
-                                    <option value="Outerwear">Outerwear</option>
-                                    <option value="Activewear">Activewear</option>
-                                    <option value="Footwear & Accessories">Footwear &amp; Accessories</option>
-                                    <option value="Formalwear">Formalwear</option>
-                                </select>
-                                <div class="invalid-feedback">Please select a category.</div>
-                            </div>
+                        <!-- Department Selector -->
+                        <div class="mb-3">
+                            <label for="productDepartment" class="form-label">Department</label>
+                            <select id="productDepartment" class="form-select" required>
+                                <option value="" selected disabled>Select Department</option>
+                                <option value="Men">Men's Collection</option>
+                                <option value="Women">Women's Collection</option>
+                                <option value="Accessories">Accessories</option>
+                            </select>
                         </div>
 
+                        <!-- Category Selector -->
+                        <div class="mb-3">
+                            <label for="productCategory" class="form-label">Category</label>
+                            <select id="productCategory" class="form-select" disabled required>
+                                <option value="" selected disabled>Select Department First</option>
+                            </select>
+                        </div>
+
+                        <!-- Category ID / Subcategory Selector -->
+                        <div class="mb-3">
+                            <label for="categoryIdSelect" class="form-label">Subcategory / Category ID</label>
+                            <select id="categoryIdSelect" class="form-select" disabled required>
+                                <option value="" selected disabled>Select Category First</option>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="productDescription" class="form-label">Description</label>
                             <textarea class="form-control" id="productDescription" rows="3"
@@ -255,7 +247,7 @@
                         <table class="table table-hover align-middle">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col">SKU</th>
+                                    <th scope="col">SKU(Stock Keeping Unit)</th>
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Price</th>
