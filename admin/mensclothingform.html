@@ -52,6 +52,7 @@
                         </div>
 
                         <div class="row">
+                            <!-- Primary Category Selection -->
                             <div class="col-md-6 mb-3">
                                 <label for="productCategory" class="form-label">Category <span
                                         class="required-flag">*</span></label>
@@ -67,10 +68,20 @@
                                 <div class="invalid-feedback">Please select a category.</div>
                             </div>
 
+                            <!-- Category ID / Subcategory Dynamic Dropdown -->
                             <div class="col-md-6 mb-3">
-                                <label for="productSubcategory" class="form-label">Subcategory</label>
-                                <input type="text" class="form-control" id="productSubcategory"
-                                    placeholder="e.g. Hoodie, Skinny Jeans">
+                                <label for="productCategory" class="form-label">Category <span
+                                        class="required-flag">*</span></label>
+                                <select class="form-select" id="productCategory" required>
+                                    <option value="" selected disabled>Category ID / Subcategory</option>
+                                    <option value="Tops">Tops</option>
+                                    <option value="Bottoms">Bottoms</option>
+                                    <option value="Outerwear">Outerwear</option>
+                                    <option value="Activewear">Activewear</option>
+                                    <option value="Footwear & Accessories">Footwear &amp; Accessories</option>
+                                    <option value="Formalwear">Formalwear</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a category.</div>
                             </div>
                         </div>
 
