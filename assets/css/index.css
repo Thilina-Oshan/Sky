@@ -85,6 +85,7 @@ main {
     }
 }
 
+
 /* ==========================================
    MOBILE DROPDOWN FIXES (Below 992px)
    ========================================== */
@@ -345,6 +346,217 @@ main {
 /* ==========================================
    5. FOOTER STYLING
    ========================================== */
+
+   /* footer.css — Skylark Trinity site footer
+   Drop into /assets/css/ and link it on any page that loads footer.html
+   into #footer-placeholder. Uses the same brass-on-navy palette as the
+   Skylark admin pages. */
+
+.st-footer {
+    background: #101d36;
+    color: #cfd6e4;
+    font-family: "Inter", system-ui, sans-serif;
+    padding: 48px 40px 0;
+}
+
+.st-footer a {
+    color: #cfd6e4;
+    text-decoration: none;
+    transition: color .15s ease;
+}
+
+.st-footer a:hover {
+    color: #d9b25c; /* brass accent */
+}
+
+.st-footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+/* Reviews column */
+.st-google-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.st-google-logo {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+.st-stars {
+    color: #f2b400;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.st-review-count {
+    font-size: 13px;
+    color: #9aa4ba;
+}
+
+.st-reviews-sub {
+    font-size: 12px;
+    color: #9aa4ba;
+    margin-top: 2px;
+    margin-bottom: 18px;
+}
+
+.st-review-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #aab2c4;
+    max-width: 260px;
+    margin: 0 0 20px;
+}
+
+.st-social-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e6e9f0;
+    margin-bottom: 10px;
+}
+
+.st-social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.st-social-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #fff;
+}
+
+.st-social-btn:hover {
+    opacity: .85;
+    color: #fff;
+}
+
+.st-social-fb { background: #1877F2; }
+.st-social-ig { background: radial-gradient(circle at 30% 110%, #fdf497, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.st-social-tt { background: #000; }
+
+/* Link columns */
+.st-footer-heading {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f2f4f8;
+    margin-bottom: 16px;
+}
+
+.st-footer-links,
+.st-footer-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.st-footer-links li {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.st-underline {
+    text-decoration: underline;
+}
+
+.st-footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #aab2c4;
+}
+
+.st-footer-contact i {
+    margin-top: 2px;
+    color: #d9b25c;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* Payment strip */
+.st-footer-payments {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.st-pay-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    color: #1c2333;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 7px 12px;
+    border-radius: 6px;
+}
+
+.st-pay-icon i {
+    font-size: 15px;
+}
+
+/* Bottom bar */
+.st-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+    font-size: 12px;
+    color: #8b93a8;
+}
+
+.st-footer-brand {
+    font-family: "Fraunces", serif;
+    font-size: 15px;
+    color: #e6e9f0;
+}
+
+.st-dot {
+    color: #d9b25c;
+}
+
+@media (max-width: 860px) {
+    .st-footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+    .st-footer-reviews {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 520px) {
+    .st-footer-top {
+        grid-template-columns: 1fr;
+    }
+    .st-footer {
+        padding: 36px 20px 0;
+    }
+}
+
+
 #navbar-placeholder,
 #footer-placeholder,
 footer {
