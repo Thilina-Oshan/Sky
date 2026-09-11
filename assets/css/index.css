@@ -85,6 +85,62 @@ main {
     }
 }
 
+.nav-auth-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* User Profile UI */
+.user-profile-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #EFE9DC;
+    padding: 0.35rem 0.8rem;
+    border-radius: 30px;
+    border: 1px solid #D8D2C4;
+}
+
+.nav-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-username {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.btn-logout {
+    background: transparent;
+    border: none;
+    color: var(--error);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    border-left: 1px solid #C9C2B4;
+    transition: color 0.2s ease;
+}
+
+.btn-logout:hover {
+    color: #80230F;
+    text-decoration: underline;
+}
+
+.btn-login-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 1.5px solid var(--brass);
+    padding-bottom: 2px;
+}
+
 
 /* ==========================================
    MOBILE DROPDOWN FIXES (Below 992px)
