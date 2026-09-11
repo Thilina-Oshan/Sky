@@ -129,7 +129,7 @@ if (fields.email.input) {
 
 
 // ---- International Phone Input Initialization ----
-/* const phoneInput = document.querySelector("#phone_n");
+const phoneInput = document.querySelector("#phone_n");
 let iti = null;
 
 if (phoneInput && window.intlTelInput) {
@@ -146,7 +146,7 @@ if (phoneInput && window.intlTelInput) {
         }
     });
 }
- */
+
 
 // ---- Form Submission Handling (Firebase Auth + Firestore) ----
 const form = document.getElementById('signupForm');
@@ -155,139 +155,137 @@ const statusBanner = document.getElementById('statusBanner');
 const termsCheckbox = document.getElementById('terms');
 const termsError = document.getElementById('termsError');
 
-if (form) {
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (statusBanner) {
+        statusBanner.classList.remove('show');
+        statusBanner.textContent = '';
+    }
+    
+    let hasError = false;
+
+    // Validate first name
+    if (!fields.firstName.input.value.trim()) {
+        setError(fields.firstName.input, fields.firstName.error, 'First name is required.');
+        hasError = true;
+    } else {
+        setError(fields.firstName.input, fields.firstName.error, '');
+    }
+
+    // Validate last name
+    if (!fields.lastName.input.value.trim()) {
+        setError(fields.lastName.input, fields.lastName.error, 'Last name is required.');
+        hasError = true;
+    } else {
+        setError(fields.lastName.input, fields.lastName.error, '');
+    }
+
+    // Validate email
+    if (!fields.email.input.value) {
+        setError(fields.email.input, fields.email.error, 'Email is required.');
+        hasError = true;
+    } else if (!isValidEmail(fields.email.input.value)) {
+        setError(fields.email.input, fields.email.error, 'Enter a valid email address.');
+        hasError = true;
+    }
+
+    // Validate phone number
+    if (!fields.phone.input.value.trim()) {
+        setError(fields.phone.input, fields.phone.error, 'Phone number is required.');
+        hasError = true;
+    } else {
+        setError(fields.phone.input, fields.phone.error, '');
+    }
+
+    // Validate address
+    if (!fields.address.input.value.trim()) {
+        setError(fields.address.input, fields.address.error, 'Address is required.');
+        hasError = true;
+    } else {
+        setError(fields.address.input, fields.address.error, '');
+    }
+
+    // Validate password
+    if (!passwordInput.value) {
+        setError(passwordInput, document.getElementById('passwordError'), 'Password is required.');
+        hasError = true;
+    } else if (passwordInput.value.length < 8) {
+        setError(passwordInput, document.getElementById('passwordError'), 'Password must be at least 8 characters.');
+        hasError = true;
+    }
+
+    // Validate terms checkbox
+    if (!termsCheckbox.checked) {
+        termsError.textContent = 'You must accept the terms to continue.';
+        hasError = true;
+    } else {
+        termsError.textContent = '';
+    }
+
+    if (hasError) return;
+
+    // UI Loading state
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+    submitBtn.querySelector('.btn-text').textContent = 'Creating account...';
+
+    // Get Form Data
+    const firstName = fields.firstName.input.value.trim();
+    const lastName = fields.lastName.input.value.trim();
+    const email = fields.email.input.value.trim();
+    const password = passwordInput.value;
+    const address = fields.address.input.value.trim();
+    const phone = iti ? iti.getNumber() : fields.phone.input.value.trim();
+
+    try {
+        // 1. Firebase Authentication eken User registger kirema
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // 2. User ge Additional details (Address, Phone, Name) Firestore eke save kirema
+        await setDoc(doc(db, "users", user.uid), {
+            uid: user.uid,
+            firstName: firstName,
+            lastName: lastName,
+            fullName: `${firstName} ${lastName}`,
+            email: email,
+            phone: phone,
+            address: address,
+            role: "customer",
+            createdAt: new Date().toISOString()
+        });
+
+        // 3. Success Feedback & Redirect
         if (statusBanner) {
-            statusBanner.classList.remove('show');
-            statusBanner.textContent = '';
+            statusBanner.style.color = "#2e7d32";
+            statusBanner.textContent = "Account created successfully! Redirecting...";
+            statusBanner.classList.add('show');
         }
-        
-        let hasError = false;
 
-        // Validate first name
-        if (!fields.firstName.input.value.trim()) {
-            setError(fields.firstName.input, fields.firstName.error, 'First name is required.');
-            hasError = true;
+        setTimeout(() => {
+            window.location.href = `/loging/loging.html`;
+        }, 1500);
+
+    } catch (error) {
+        console.error("Firebase Registration Error:", error);
+
+        // Firebase Error Messages Handle kirema
+        if (error.code === 'auth/email-already-in-use') {
+            setError(fields.email.input, fields.email.error, 'This email address is already in use.');
+        } else if (error.code === 'auth/invalid-email') {
+            setError(fields.email.input, fields.email.error, 'Invalid email address format.');
+        } else if (error.code === 'auth/weak-password') {
+            setError(passwordInput, document.getElementById('passwordError'), 'Password is too weak.');
         } else {
-            setError(fields.firstName.input, fields.firstName.error, '');
-        }
-
-        // Validate last name
-        if (!fields.lastName.input.value.trim()) {
-            setError(fields.lastName.input, fields.lastName.error, 'Last name is required.');
-            hasError = true;
-        } else {
-            setError(fields.lastName.input, fields.lastName.error, '');
-        }
-
-        // Validate email
-        if (!fields.email.input.value) {
-            setError(fields.email.input, fields.email.error, 'Email is required.');
-            hasError = true;
-        } else if (!isValidEmail(fields.email.input.value)) {
-            setError(fields.email.input, fields.email.error, 'Enter a valid email address.');
-            hasError = true;
-        }
-
-        // Validate phone number
-        if (!fields.phone.input.value.trim()) {
-            setError(fields.phone.input, fields.phone.error, 'Phone number is required.');
-            hasError = true;
-        } else {
-            setError(fields.phone.input, fields.phone.error, '');
-        }
-
-        // Validate address
-        if (!fields.address.input.value.trim()) {
-            setError(fields.address.input, fields.address.error, 'Address is required.');
-            hasError = true;
-        } else {
-            setError(fields.address.input, fields.address.error, '');
-        }
-
-        // Validate password
-        if (!passwordInput.value) {
-            setError(passwordInput, document.getElementById('passwordError'), 'Password is required.');
-            hasError = true;
-        } else if (passwordInput.value.length < 8) {
-            setError(passwordInput, document.getElementById('passwordError'), 'Password must be at least 8 characters.');
-            hasError = true;
-        }
-
-        // Validate terms checkbox
-        if (!termsCheckbox.checked) {
-            termsError.textContent = 'You must accept the terms to continue.';
-            hasError = true;
-        } else {
-            termsError.textContent = '';
-        }
-
-        if (hasError) return;
-
-        // UI Loading state
-        submitBtn.classList.add('loading');
-        submitBtn.disabled = true;
-        submitBtn.querySelector('.btn-text').textContent = 'Creating account...';
-
-        // Get Form Data
-        const firstName = fields.firstName.input.value.trim();
-        const lastName = fields.lastName.input.value.trim();
-        const email = fields.email.input.value.trim();
-        const password = passwordInput.value;
-        const address = fields.address.input.value.trim();
-        const phone = iti ? iti.getNumber() : fields.phone.input.value.trim();
-
-        try {
-            // 1. Firebase Authentication User Registration
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-
-            // 2. Save User details in Firestore
-            await setDoc(doc(db, "users", user.uid), {
-                uid: user.uid,
-                firstName: firstName,
-                lastName: lastName,
-                fullName: `${firstName} ${lastName}`,
-                email: email,
-                phone: phone,
-                address: address,
-                role: "customer",
-                createdAt: new Date().toISOString()
-            });
-
-            // 3. Success Feedback & Redirect
             if (statusBanner) {
-                statusBanner.style.color = "#2e7d32";
-                statusBanner.textContent = "Account created successfully! Redirecting to login...";
+                statusBanner.style.color = "#d32f2f";
+                statusBanner.textContent = error.message || "An error occurred during signup.";
                 statusBanner.classList.add('show');
             }
-
-            // Redirecting to /loging/loging.html
-            setTimeout(() => {
-                window.location.href = "/loging/loging.html";
-            }, 1500);
-
-        } catch (error) {
-            console.error("Firebase Registration Error:", error);
-
-            if (error.code === 'auth/email-already-in-use') {
-                setError(fields.email.input, fields.email.error, 'This email address is already in use.');
-            } else if (error.code === 'auth/invalid-email') {
-                setError(fields.email.input, fields.email.error, 'Invalid email address format.');
-            } else if (error.code === 'auth/weak-password') {
-                setError(passwordInput, document.getElementById('passwordError'), 'Password is too weak.');
-            } else {
-                if (statusBanner) {
-                    statusBanner.style.color = "#d32f2f";
-                    statusBanner.textContent = error.message || "An error occurred during signup.";
-                    statusBanner.classList.add('show');
-                }
-            }
-        } finally {
-            submitBtn.classList.remove('loading');
-            submitBtn.disabled = false;
-            submitBtn.querySelector('.btn-text').textContent = 'Create account';
         }
-    });
-}
+    } finally {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        submitBtn.querySelector('.btn-text').textContent = 'Create account';
+    }
+});
