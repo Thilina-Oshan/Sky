@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import { getAuth, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC9_X-DULVSJSMvLEBRYhhE25HydPuLd8",
+  apiKey: "AIzaSyC9_X-DULVSJSPMvlEbRYHhE25HydPuLd8",
   authDomain: "sky-trinity.firebaseapp.com",
   projectId: "sky-trinity",
   storageBucket: "sky-trinity.firebasestorage.app",
