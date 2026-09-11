@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skylark — Sign in</title>
 
-    <!-- Bootstrap CSS (grid + utilities only, visuals are custom) -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/loging.css">
     <link rel="icon" href="/assets/img/logo-removebg.png" type="image/png">
 </head>
@@ -114,13 +112,55 @@
 
     </div>
 
+    <!-- Invisible Firebase reCAPTCHA Container -->
+    <div id="recaptcha-container"></div>
+
+    <!-- SMS OTP Password Reset Modal -->
+    <div class="modal fade" id="forgotModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title font-weight-bold">Reset Password via SMS</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Step 1: Mobile Phone Number Input -->
+                    <div id="phoneStep">
+                        <p class="text-muted small">Enter your mobile number with country code (e.g., +94771234567).</p>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Phone Number</label>
+                            <input type="tel" id="resetPhone" class="form-control" placeholder="+94771234567">
+                        </div>
+                        <button type="button" id="sendOtpBtn" class="btn btn-dark w-100">Send OTP</button>
+                    </div>
+
+                    <!-- Step 2: Verification Code & Password Reset Input -->
+                    <div id="otpStep" style="display: none;">
+                        <p class="text-muted small">Enter the 6-digit OTP code sent to your phone and set a new password.</p>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">OTP Code</label>
+                            <input type="text" id="otpInput" class="form-control" placeholder="123456" maxlength="6">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">New Password</label>
+                            <input type="password" id="newPasswordInput" class="form-control" placeholder="At least 6 characters">
+                        </div>
+                        <button type="button" id="verifyOtpBtn" class="btn btn-dark w-100">Reset Password</button>
+                    </div>
+
+                    <!-- Modal Status Message -->
+                    <div id="modalStatus" class="alert mt-3 d-none" role="alert"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- 1. Firebase JS Config File -->
-    <script type="module" src="../assets/js/firebase.js"></script>
-
-    <!-- 2. Oyagē Login Logic File -->
-    <script type="module" src="../assets/js/loging.js"></script>
-
+    <script type="module" src="/assets/js/firebase.js"></script>
+    <script type="module" src="/assets/js/loging.js"></script>
 
 </body>
 

@@ -1,10 +1,15 @@
-// ---- ES Module Imports (Must be at the top) ----
+// ---- ES Module Imports ----
 import { auth, googleProvider } from "./firebase.js";
 import { 
     signInWithEmailAndPassword, 
     signInWithPopup, 
-    sendPasswordResetEmail 
+    RecaptchaVerifier, 
+    signInWithPhoneNumber,
+    updatePassword
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+// Global variables for phone verification
+let confirmationResult = null;
 
 // ---- Rotating Quotes (Skylark brand style guide) ----
 const quotes = [
@@ -72,7 +77,7 @@ function setError(input, errorEl, message) {
   }
 }
 
-// Real-time validations
+// Real-time email validation
 if (emailInput) {
     emailInput.addEventListener('input', () => {
       if (emailInput.value && !isValidEmail(emailInput.value)) {
@@ -83,6 +88,7 @@ if (emailInput) {
     });
 }
 
+// Real-time password validation
 if (passwordInput) {
     passwordInput.addEventListener('input', () => {
       if (passwordInput.value.length > 0 && passwordInput.value.length < 6) {
@@ -146,7 +152,7 @@ if (form) {
 if (googleBtn) {
   googleBtn.addEventListener("click", async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider);
+      await signInWithPopup(auth, googleProvider);
       window.location.href = "../index.html";
     } catch (error) {
       console.error("Google login error:", error);
@@ -159,46 +165,131 @@ if (googleBtn) {
   });
 }
 
-// ---- Firebase Password Reset Handler ----
+// ---- Firebase Phone OTP Password Reset Handler ----
+
+// Helper to set up reCAPTCHA verifier
+function setupRecaptcha() {
+    if (!window.recaptchaVerifier) {
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+            'size': 'invisible'
+        });
+    }
+}
+
+// Helper to display status messages in the modal
+function showModalStatus(message, type) {
+    const modalStatus = document.getElementById('modalStatus');
+    if (modalStatus) {
+        modalStatus.className = `alert alert-${type} mt-3`;
+        modalStatus.textContent = message;
+        modalStatus.classList.remove('d-none');
+    }
+}
+
+// Trigger SMS Reset Modal
 if (forgotLink) {
-    forgotLink.addEventListener('click', async (e) => {
+    forgotLink.addEventListener('click', (e) => {
       e.preventDefault();
+      
+      // Reset Modal Form steps & input states
+      const phoneStep = document.getElementById('phoneStep');
+      const otpStep = document.getElementById('otpStep');
+      const modalStatus = document.getElementById('modalStatus');
+      
+      if (phoneStep) phoneStep.style.display = 'block';
+      if (otpStep) otpStep.style.display = 'none';
+      if (modalStatus) modalStatus.classList.add('d-none');
 
-      const email = emailInput.value.trim();
+      document.getElementById('resetPhone').value = '';
+      document.getElementById('otpInput').value = '';
+      document.getElementById('newPasswordInput').value = '';
 
-      if (!email) {
-        setError(emailInput, emailError, 'Please enter your email address first.');
-        return;
+      // Initialize Bootstrap Modal instance
+      const forgotModalEl = document.getElementById('forgotModal');
+      if (forgotModalEl) {
+          const forgotModal = new bootstrap.Modal(forgotModalEl);
+          forgotModal.show();
       }
+    });
+}
 
-      if (!isValidEmail(email)) {
-        setError(emailInput, emailError, 'Please enter a valid email address.');
-        return;
-      }
+// Step 1: Send SMS OTP
+const sendOtpBtn = document.getElementById('sendOtpBtn');
+if (sendOtpBtn) {
+    sendOtpBtn.addEventListener('click', async () => {
+        const phoneNumber = document.getElementById('resetPhone').value.trim();
 
-      try {
-        await sendPasswordResetEmail(auth, email);
-
-        statusBanner.style.color = '#0f5132';
-        statusBanner.style.backgroundColor = '#d1e7dd';
-        statusBanner.style.borderColor = '#badbcc';
-        statusBanner.textContent = `Password reset link sent to ${email}! Check your inbox.`;
-        statusBanner.classList.add('show');
-
-        setError(emailInput, emailError, '');
-      } catch (error) {
-        console.error("Password Reset Error:", error);
-
-        statusBanner.style.color = '#842029';
-        statusBanner.style.backgroundColor = '#f8d7da';
-        statusBanner.style.borderColor = '#f5c2c7';
-
-        if (error.code === 'auth/user-not-found') {
-          statusBanner.textContent = 'No user found with this email address.';
-        } else {
-          statusBanner.textContent = 'Failed to send reset email. Please try again.';
+        if (!phoneNumber || !phoneNumber.startsWith('+')) {
+            showModalStatus('Please enter a valid phone number with country code (e.g. +94771234567).', 'danger');
+            return;
         }
-        statusBanner.classList.add('show');
-      }
+
+        try {
+            sendOtpBtn.disabled = true;
+            sendOtpBtn.textContent = 'Sending OTP...';
+
+            setupRecaptcha();
+            const appVerifier = window.recaptchaVerifier;
+
+            // Send Verification Code via Firebase SMS
+            confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
+
+            showModalStatus('OTP sent successfully to ' + phoneNumber, 'success');
+
+            // Switch to Step 2
+            document.getElementById('phoneStep').style.display = 'none';
+            document.getElementById('otpStep').style.display = 'block';
+
+        } catch (error) {
+            console.error("SMS OTP Error:", error);
+            showModalStatus('Failed to send OTP: ' + error.message, 'danger');
+        } finally {
+            sendOtpBtn.disabled = false;
+            sendOtpBtn.textContent = 'Send OTP';
+        }
+    });
+}
+
+// Step 2: Verify OTP Code & Update Password
+const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+if (verifyOtpBtn) {
+    verifyOtpBtn.addEventListener('click', async () => {
+        const otpCode = document.getElementById('otpInput').value.trim();
+        const newPassword = document.getElementById('newPasswordInput').value.trim();
+
+        if (!otpCode || otpCode.length !== 6) {
+            showModalStatus('Please enter a valid 6-digit OTP code.', 'danger');
+            return;
+        }
+
+        if (!newPassword || newPassword.length < 6) {
+            showModalStatus('New password must be at least 6 characters.', 'danger');
+            return;
+        }
+
+        try {
+            verifyOtpBtn.disabled = true;
+            verifyOtpBtn.textContent = 'Verifying...';
+
+            // Confirm OTP Code with Firebase
+            const result = await confirmationResult.confirm(otpCode);
+            const user = result.user;
+
+            // Update Password for User
+            await updatePassword(user, newPassword);
+
+            showModalStatus('Password updated successfully! Reloading...', 'success');
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+
+        } catch (error) {
+            console.error("OTP Verification Error:", error);
+            showModalStatus('Invalid OTP code or password reset failed.', 'danger');
+        } finally {
+            verifyOtpBtn.disabled = false;
+            verifyOtpBtn.textContent = 'Reset Password';
+        }
     });
 }
