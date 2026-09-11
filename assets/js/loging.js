@@ -152,3 +152,51 @@ if (googleBtn) {
     }
   });
 }
+// Password reset handler
+const forgotLink = document.getElementById('forgotLink');
+
+forgotLink.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  const email = emailInput.value.trim();
+
+  // Check if email field is empty
+  if (!email) {
+    setError(emailInput, emailError, 'Please enter your email address first.');
+    return;
+  }
+
+  // Validate email format
+  if (!isValidEmail(email)) {
+    setError(emailInput, emailError, 'Please enter a valid email address.');
+    return;
+  }
+
+  try {
+    // Send Firebase password reset email
+    await sendPasswordResetEmail(auth, email);
+
+    // Show success message in status banner
+    statusBanner.style.color = '#0f5132';
+    statusBanner.style.backgroundColor = '#d1e7dd';
+    statusBanner.style.borderColor = '#badbcc';
+    statusBanner.textContent = `Password reset link sent to ${email}! Please check your inbox.`;
+    statusBanner.classList.add('show');
+
+    setError(emailInput, emailError, '');
+  } catch (error) {
+    console.error("Password Reset Error:", error);
+
+    // Handle Firebase specific errors
+    statusBanner.style.color = '#842029';
+    statusBanner.style.backgroundColor = '#f8d7da';
+    statusBanner.style.borderColor = '#f5c2c7';
+
+    if (error.code === 'auth/user-not-found') {
+      statusBanner.textContent = 'No user found with this email address.';
+    } else {
+      statusBanner.textContent = 'Failed to send reset email. Please try again.';
+    }
+    statusBanner.classList.add('show');
+  }
+});
