@@ -141,6 +141,16 @@ main {
     padding-bottom: 2px;
 }
 
+#user-nav .dropdown-toggle::after {
+    vertical-align: middle;
+}
+
+#navUserImg {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 
 /* ==========================================
    MOBILE DROPDOWN FIXES (Below 992px)

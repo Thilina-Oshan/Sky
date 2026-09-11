@@ -1,13 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Load Navbar component
+    // Load Navbar component dynamically
     fetch("/includes/navbar.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("navbar-placeholder").innerHTML = data;
+            
+            // Re-initialize Bootstrap dropdowns for dynamic HTML
+            const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+            dropdownElementList.forEach(dropdownToggle => {
+                new bootstrap.Dropdown(dropdownToggle);
+            });
+
+            // Initialize custom hover dropdown behavior
+            initDropdowns();
         })
         .catch(error => console.error("Error loading navbar:", error));
 
-    // Load Footer component
+    // Load Footer component dynamically
     fetch("/includes/footer.html")
         .then(response => response.text())
         .then(data => {
@@ -16,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error loading footer:", error));
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+// Function to handle desktop hover interactions for dropdowns
+function initDropdowns() {
     const dropdowns = document.querySelectorAll('.navbar-nav .dropdown, .dropdown-menu .dropend');
 
     dropdowns.forEach(dropdown => {
@@ -25,12 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!menu) return;
 
-        // Mouse Enter (Desktop)
+        // Mouse Enter event for desktop devices
         dropdown.addEventListener('mouseenter', function () {
             if (window.innerWidth >= 992) {
                 clearTimeout(timeoutId);
                 
-                // Close sibling open menus
+                // Close open sibling submenus
                 const siblings = dropdown.parentElement.querySelectorAll(':scope > .dropend > .dropdown-menu');
                 siblings.forEach(sibMenu => {
                     if (sibMenu !== menu) {
@@ -43,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Mouse Leave (Desktop)
+        // Mouse Leave event for desktop devices
         dropdown.addEventListener('mouseleave', function () {
             if (window.innerWidth >= 992) {
                 menu.classList.add('animate-out');
@@ -57,5 +67,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-});
-
+}

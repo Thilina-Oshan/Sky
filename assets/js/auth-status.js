@@ -1,44 +1,56 @@
 import { auth } from "./firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-const guestNav = document.getElementById("guest-nav");
-const userNav = document.getElementById("user-nav");
-const navUserName = document.getElementById("navUserName");
-const navUserImg = document.getElementById("navUserImg");
-const logoutBtn = document.getElementById("logoutBtn");
+// A function that waits for the navbar to be injected and then updates the UI.
+function updateNavUI(user) {
+    const guestNav = document.getElementById("guest-nav");
+    const userNav = document.getElementById("user-nav");
+    const navUserName = document.getElementById("navUserName");
+    const navUserEmail = document.getElementById("navUserEmail");
+    const navUserImg = document.getElementById("navUserImg");
 
-// Check Authentication Status
-onAuthStateChanged(auth, (user) => {
+    if (!guestNav || !userNav) {
+        // If the navbar has not yet loaded into the DOM, it retries after half a second.
+        setTimeout(() => updateNavUI(user), 100);
+        return;
+    }
+
     if (user) {
-        // User Login වී ඇත්නම්:
+        // User Logged In
         guestNav.style.display = "none";
-        userNav.style.display = "flex";
+        userNav.style.display = "block";
 
-        // Display Name හෝ Email එක පෙන්වීම
-        navUserName.textContent = user.displayName ? user.displayName.split(' ')[0] : user.email.split('@')[0];
+        const displayName = user.displayName ? user.displayName.split(' ')[0] : user.email.split('@')[0];
+        if (navUserName) navUserName.textContent = displayName;
+        if (navUserEmail) navUserEmail.textContent = user.email;
 
-        // Google photo එකක් තිබේ නම් එයද, නැතහොත් default avatar එකක්ද යෙදීම
-        if (user.photoURL) {
-            navUserImg.src = user.photoURL;
-        } else {
-            navUserImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(navUserName.textContent)}&background=8B6F47&color=fff`;
+        if (navUserImg) {
+            if (user.photoURL) {
+                navUserImg.src = user.photoURL;
+            } else {
+                navUserImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=8B6F47&color=fff`;
+            }
         }
     } else {
-        // User Logout වී ඇත්නම්:
+        // User Logged Out
         guestNav.style.display = "block";
         userNav.style.display = "none";
     }
+}
+
+// Firebase Auth State Listener
+onAuthStateChanged(auth, (user) => {
+    updateNavUI(user);
 });
 
-// Logout Feature
-if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
+// Handling the Logout Button using Event Delegation
+document.addEventListener("click", async (e) => {
+    if (e.target && e.target.closest("#logoutBtn")) {
         try {
             await signOut(auth);
-            alert("Sign out successful!");
-            window.location.reload(); // Page එක Refresh කිරීම
+            window.location.reload();
         } catch (error) {
             console.error("Logout Error:", error);
         }
-    });
-}
+    }
+});
