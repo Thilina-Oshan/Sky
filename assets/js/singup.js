@@ -129,7 +129,7 @@ if (fields.email.input) {
 
 
 // ---- International Phone Input Initialization ----
-const phoneInput = document.querySelector("#phone_n");
+/* const phoneInput = document.querySelector("#phone_n");
 let iti = null;
 
 if (phoneInput && window.intlTelInput) {
@@ -146,7 +146,7 @@ if (phoneInput && window.intlTelInput) {
         }
     });
 }
-
+ */
 
 // ---- Form Submission Handling (Firebase Auth + Firestore) ----
 const form = document.getElementById('signupForm');
