@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Product Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/productdetail.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="container pt-5 mt-5 mb-5">
+
+        <div class="row g-5">
+
+            <!-- Gallery -->
+            <div class="col-12 col-lg-6">
+                <div class="main-image-wrap">
+                    <img id="mainProductImage" src="https://placehold.co/700x875?text=Product+Image"
+                        alt="Product image">
+                </div>
+                <div class="thumbnail-row" id="thumbnailRow">
+                    <!-- Thumbnails injected by JS -->
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div class="col-12 col-lg-6">
+                <span class="product-category-tag" id="productCategoryTag">Tops</span>
+                <h1 class="product-title" id="productTitle">Classic Crew Neck T-Shirt</h1>
+
+                <div class="d-flex align-items-center gap-2 rating-wrapper mb-2">
+                    <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                    <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                    <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                    <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                    <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                    <span class="rating-count">4.6 (128 reviews)</span>
+                </div>
+
+                <div class="price-row">
+                    <span id="productPrice">Rs 800</span>
+                    <span class="original-price" id="productOriginalPrice">Rs 1000</span>
+                </div>
+
+                <div class="stock-status in-stock mb-3" id="stockStatus">In Stock — 45 available</div>
+
+                <p class="text-muted" id="productDescriptionShort">
+                    A soft, breathable everyday t-shirt made from 100% combed cotton. Relaxed fit with a durable crew
+                    neckline that holds its shape wash after wash.
+                </p>
+
+                <hr class="my-4">
+
+                <!-- Size Selection -->
+                <div class="mb-4">
+                    <span class="option-label">Size</span>
+                    <div class="size-options btn-group" role="group" aria-label="Size selection">
+                        <input type="radio" class="btn-check" name="sizeOption" id="size-s" autocomplete="off">
+                        <label class="btn btn-outline-dark btn-size" for="size-s">S</label>
+
+                        <input type="radio" class="btn-check" name="sizeOption" id="size-m" autocomplete="off" checked>
+                        <label class="btn btn-outline-dark btn-size" for="size-m">M</label>
+
+                        <input type="radio" class="btn-check" name="sizeOption" id="size-l" autocomplete="off">
+                        <label class="btn btn-outline-dark btn-size" for="size-l">L</label>
+
+                        <input type="radio" class="btn-check" name="sizeOption" id="size-xl" autocomplete="off">
+                        <label class="btn btn-outline-dark btn-size" for="size-xl">XL</label>
+
+                        <input type="radio" class="btn-check" name="sizeOption" id="size-xxl" autocomplete="off">
+                        <label class="btn btn-outline-dark btn-size" for="size-xxl">XXL</label>
+                    </div>
+                    <div><a href="/pages/sizeguide.html" class="small text-decoration-none">Size guide</a></div>
+                </div>
+
+                <!-- Color Selection -->
+                <div class="mb-4">
+                    <span class="option-label">Color: <span id="selectedColorLabel">Black</span></span>
+                    <div class="color-options d-flex gap-2">
+                        <span class="color-swatch selected" style="background:#000;" data-color="Black"
+                            title="Black"></span>
+                        <span class="color-swatch" style="background:#1b3a5c;" data-color="Navy" title="Navy"></span>
+                        <span class="color-swatch" style="background:#7d7d7d;" data-color="Grey" title="Grey"></span>
+                        <span class="color-swatch" style="background:#8c1c1c;" data-color="Maroon"
+                            title="Maroon"></span>
+                    </div>
+                </div>
+
+                <!-- Quantity + Add to Cart -->
+                <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+                    <div class="qty-selector input-group">
+                        <button class="btn btn-outline-secondary" type="button" id="qtyDecrease">−</button>
+                        <input type="number" class="form-control" id="qtyInput" value="1" min="1" max="45">
+                        <button class="btn btn-outline-secondary" type="button" id="qtyIncrease">+</button>
+                    </div>
+                    <button class="btn btn-primary btn-lg flex-fill" id="addToCartBtn" style="max-width: 280px;">Add to
+                        Cart</button>
+                    <button class="btn btn-outline-dark btn-lg" id="wishlistBtn" title="Add to wishlist">♡</button>
+                </div>
+
+                <ul class="list-unstyled small text-muted mt-4">
+                    <li>✓ Free shipping on orders over Rs 5,000</li>
+                    <li>✓ Easy 14-day returns</li>
+                    <li>✓ Secure checkout</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tabs: Description / Reviews / Shipping -->
+        <div class="mt-5">
+            <ul class="nav nav-tabs product-tabs" id="productDetailTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                        data-bs-target="#description-pane" type="button" role="tab">Description</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-pane"
+                        type="button" role="tab">Reviews (128)</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping-pane"
+                        type="button" role="tab">Shipping &amp; Returns</button>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active tab-content-area" id="description-pane" role="tabpanel">
+                    <p>Our Classic Crew Neck T-Shirt is built for everyday comfort without sacrificing style. Cut from
+                        100% combed cotton jersey, it's soft against the skin, breathable in warm weather, and durable
+                        enough to hold its shape through repeated washes.</p>
+                    <ul>
+                        <li>100% combed cotton, 180 GSM</li>
+                        <li>Relaxed regular fit</li>
+                        <li>Reinforced crew neckline</li>
+                        <li>Machine washable</li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane fade tab-content-area" id="reviews-pane" role="tabpanel">
+                    <div class="review-item">
+                        <div class="d-flex justify-content-between">
+                            <strong>Ayesha K.</strong>
+                            <span class="text-muted small">2 weeks ago</span>
+                        </div>
+                        <div class="rating-wrapper my-1">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                        </div>
+                        <p class="mb-0">Great fit and the fabric feels premium for the price. Ordered a second one in
+                            navy.</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="d-flex justify-content-between">
+                            <strong>Ruwan P.</strong>
+                            <span class="text-muted small">1 month ago</span>
+                        </div>
+                        <div class="rating-wrapper my-1">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                            <img src="https://codingyaar.com/wp-content/uploads/star.png" alt="star">
+                        </div>
+                        <p class="mb-0">Good everyday tee. Runs slightly large, consider sizing down.</p>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade tab-content-area" id="shipping-pane" role="tabpanel">
+                    <p><strong>Shipping:</strong> Orders are processed within 1-2 business days. Standard delivery takes
+                        3-5 business days; express delivery is available at checkout. Free standard shipping on orders
+                        over Rs 5,000.</p>
+                    <p><strong>Returns:</strong> Unworn items with tags attached can be returned within 14 days of
+                        delivery for a full refund. Return shipping is free for defective or incorrect items.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="mt-5">
+            <h2 class="h5 related-heading">You May Also Like</h2>
+            <div class="row g-4" id="relatedProductsRow">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Add to Cart Toast -->
+    <div class="toast align-items-center text-bg-dark border-0" id="addToCartToast" role="alert">
+        <div class="d-flex">
+            <div class="toast-body" id="addToCartToastBody">Added to cart.</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/product.js"></script>
+    <script src="/assets/js/productdetail.js"></script>
+
+
+
+</body>
+
+</html>
