@@ -1,0 +1,233 @@
+body {
+    background: #f7f7f8;
+}
+
+.dash-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Sidebar */
+.profile-summary {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-avatar {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 auto 0.75rem;
+}
+
+.dash-nav .nav-link {
+    color: #333;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.dash-nav .nav-link.active {
+    background-color: #000;
+    color: #fff;
+}
+
+.dash-nav .nav-link:hover:not(.active) {
+    background-color: #f0f0f0;
+}
+
+.dash-nav .nav-link.text-danger:hover {
+    background-color: #fdeeee;
+}
+
+/* Stat cards */
+.stat-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 1.25rem 1.5rem;
+    height: 100%;
+}
+
+.stat-label {
+    color: #777;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Orders table */
+.order-status-badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.6em;
+}
+
+/* Wishlist */
+.wishlist-remove-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.wishlist-card-wrap {
+    position: relative;
+}
+
+/* Addresses */
+.address-card {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 1.25rem;
+    height: 100%;
+}
+
+.address-card.is-default {
+    border-color: #000;
+}
+
+.default-badge {
+    font-size: 0.7rem;
+}
+
+.section-title {
+    font-weight: 700;
+}
+
+/* Notifications */
+.notif-dropdown {
+    width: 340px;
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.85rem;
+}
+
+.notif-item:last-child {
+    border-bottom: 0;
+}
+
+.notif-item.unread {
+    background: #f7f9ff;
+}
+
+.notif-time {
+    color: #999;
+    font-size: 0.75rem;
+}
+
+.notif-empty {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+/* Loyalty tier */
+.loyalty-progress {
+    height: 10px;
+    border-radius: 6px;
+}
+
+#loyaltyTierBadge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.75em;
+}
+
+#loyaltyBenefitsList {
+    padding-left: 0;
+    list-style: none;
+}
+
+/* Order tracking stepper */
+.tracking-steps {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0;
+}
+
+.tracking-steps li {
+    position: relative;
+    padding-bottom: 1.75rem;
+}
+
+.tracking-steps li:last-child {
+    padding-bottom: 0;
+}
+
+.tracking-steps li::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 0.15rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ddd;
+}
+
+.tracking-steps li::after {
+    content: '';
+    position: absolute;
+    left: calc(-2rem + 5px);
+    top: 1.1rem;
+    width: 2px;
+    height: calc(100% - 0.5rem);
+    background: #ddd;
+}
+
+.tracking-steps li:last-child::after {
+    display: none;
+}
+
+.tracking-steps li.done::before {
+    background: #000;
+    border-color: #000;
+}
+
+.tracking-steps li.done::after {
+    background: #000;
+}
+
+.tracking-steps .step-label {
+    font-weight: 600;
+}
+
+.tracking-steps li.pending .step-label {
+    color: #999;
+    font-weight: 500;
+}
+
+.tracking-steps .step-date {
+    color: #999;
+    font-size: 0.8rem;
+}
