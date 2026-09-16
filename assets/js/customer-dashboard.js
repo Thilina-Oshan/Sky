@@ -379,3 +379,43 @@
     renderNotifications();
     renderLoyalty();
 })();
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Fetch user data (Example local storage check or session data)
+    const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {
+        name: "Janith Perera",
+        email: "janith@example.com",
+        orders: []
+    };
+
+    // 2. Render User Profile Information safely
+    const welcomeName = document.getElementById("welcome-name");
+    const profileName = document.getElementById("profile-name");
+    const profileEmail = document.getElementById("profile-email");
+    const profileInitials = document.getElementById("profileInitials");
+
+    if (welcomeName) welcomeName.textContent = currentUser.name;
+    if (profileName) profileName.textContent = currentUser.name;
+    if (profileEmail) profileEmail.textContent = currentUser.email;
+
+    if (profileInitials && currentUser.name) {
+        const initials = currentUser.name.split(" ").map(n => n[0]).join("").toUpperCase();
+        profileInitials.textContent = initials.substring(0, 2);
+    }
+
+    // 3. Render Dashboard Stats
+    const totalOrdersEl = document.getElementById("stat-total-orders");
+    const pendingOrdersEl = document.getElementById("stat-pending-orders");
+    const completedOrdersEl = document.getElementById("stat-completed-orders");
+
+    if (totalOrdersEl) totalOrdersEl.textContent = currentUser.orders.length;
+
+    // 4. Handle Logout Functionality
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", function () {
+            localStorage.removeItem("currentUser");
+            window.location.href = "login.html";
+        });
+    }
+});

@@ -9,7 +9,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/index.css">
     <link rel="stylesheet" href="/assets/css/custormer-dashboard.css">
-    <link rel="icon" href="/assets/img/logo-removebg.png" type="image/png">   
+    <link rel="icon" href="/assets/img/logo-removebg.png" type="image/png">
 </head>
 
 <body>
@@ -23,11 +23,14 @@
             <h1 class="fw-bold mb-0">My Account</h1>
 
             <div class="dropdown">
-                <button class="btn btn-outline-dark position-relative" type="button" id="notificationsDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-outline-dark position-relative" type="button" id="notificationsDropdownBtn"
+                    data-bs-toggle="dropdown" aria-expanded="false">
                     🔔
-                    <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle" id="notifBadge" style="display:none;">0</span>
+                    <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
+                        id="notifBadge" style="display:none;">0</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-end p-0 notif-dropdown" aria-labelledby="notificationsDropdownBtn">
+                <div class="dropdown-menu dropdown-menu-end p-0 notif-dropdown"
+                    aria-labelledby="notificationsDropdownBtn">
                     <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
                         <strong class="small">Notifications</strong>
                         <button class="btn btn-sm btn-link p-0 small" id="markAllReadBtn">Mark all as read</button>
@@ -48,12 +51,18 @@
                         <div class="text-muted small" id="profileEmail">jane.doe@example.com</div>
                     </div>
                     <div class="p-3">
-                        <div class="nav flex-column dash-nav gap-1" id="dashTabNav" role="tablist" aria-orientation="vertical">
-                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#overview-pane" type="button" role="tab">Overview</button>
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#orders-pane" type="button" role="tab">My Orders</button>
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#wishlist-pane" type="button" role="tab">Wishlist</button>
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#addresses-pane" type="button" role="tab">Saved Addresses</button>
-                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#settings-pane" type="button" role="tab">Account Settings</button>
+                        <div class="nav flex-column dash-nav gap-1" id="dashTabNav" role="tablist"
+                            aria-orientation="vertical">
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#overview-pane"
+                                type="button" role="tab">Overview</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#orders-pane" type="button"
+                                role="tab">My Orders</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#wishlist-pane" type="button"
+                                role="tab">Wishlist</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#addresses-pane"
+                                type="button" role="tab">Saved Addresses</button>
+                            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#settings-pane" type="button"
+                                role="tab">Account Settings</button>
                             <hr class="my-2">
                             <button class="nav-link text-danger" type="button" id="logoutBtn">Log Out</button>
                         </div>
@@ -106,7 +115,8 @@
                                 <div class="text-muted small text-end" id="loyaltyNextTierLabel"></div>
                             </div>
                             <div class="progress loyalty-progress">
-                                <div class="progress-bar bg-dark" id="loyaltyProgressBar" role="progressbar" style="width:0%"></div>
+                                <div class="progress-bar bg-dark" id="loyaltyProgressBar" role="progressbar"
+                                    style="width:0%"></div>
                             </div>
                             <ul class="small text-muted mt-3 mb-0" id="loyaltyBenefitsList"></ul>
                         </div>
@@ -165,7 +175,8 @@
                         <div class="dash-card p-4">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h2 class="h6 section-title mb-0">Saved Addresses</h2>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addAddressModal">+ Add Address</button>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#addAddressModal">+ Add Address</button>
                             </div>
                             <div class="row g-3" id="addressesRow"></div>
                         </div>
@@ -179,17 +190,20 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="settingsFullName" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="settingsFullName" value="Jane Doe" required>
+                                        <input type="text" class="form-control" id="settingsFullName" value="Jane Doe"
+                                            required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="settingsEmail" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" id="settingsEmail" value="jane.doe@example.com" required>
+                                        <input type="email" class="form-control" id="settingsEmail"
+                                            value="jane.doe@example.com" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="settingsPhone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="settingsPhone" value="+94 77 123 4567">
+                                        <input type="tel" class="form-control" id="settingsPhone"
+                                            value="+94 77 123 4567">
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="settingsDob" class="form-label">Date of Birth</label>
@@ -214,16 +228,19 @@
                                         <input type="password" class="form-control" id="confirmPassword">
                                     </div>
                                 </div>
-                                <div class="small text-danger" id="passwordMismatchMsg" style="display:none;">New passwords do not match.</div>
+                                <div class="small text-danger" id="passwordMismatchMsg" style="display:none;">New
+                                    passwords do not match.</div>
 
                                 <hr class="my-4">
 
                                 <div class="form-check form-switch mb-4">
                                     <input class="form-check-input" type="checkbox" id="emailNotifToggle" checked>
-                                    <label class="form-check-label" for="emailNotifToggle">Email me about order updates &amp; promotions</label>
+                                    <label class="form-check-label" for="emailNotifToggle">Email me about order updates
+                                        &amp; promotions</label>
                                 </div>
 
-                                <div id="settingsSavedAlert" class="alert alert-success" style="display:none;">Changes saved successfully.</div>
+                                <div id="settingsSavedAlert" class="alert alert-success" style="display:none;">Changes
+                                    saved successfully.</div>
 
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                             </form>
@@ -248,7 +265,8 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="addrLabel" class="form-label">Label</label>
-                            <input type="text" class="form-control" id="addrLabel" placeholder="e.g. Home, Office" required>
+                            <input type="text" class="form-control" id="addrLabel" placeholder="e.g. Home, Office"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="addrLine1" class="form-label">Address Line</label>
@@ -306,9 +324,7 @@
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/customer-dashboard.js"></script>
 
