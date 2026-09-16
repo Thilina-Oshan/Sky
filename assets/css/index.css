@@ -152,6 +152,41 @@ main {
     border-radius: 50%;
 }
 
+/* Enables smooth scrolling when clicking dropdown or quick nav links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Pushes the "jump-to" point down by 100px so the sticky navbar doesn't cover section titles */
+section[id] {
+    scroll-margin-top: 100px;
+}
+
+/* Optional styling for your category-nav so it looks nice and sticky */
+.category-nav {
+    background: #fff;
+    border-bottom: 1px solid #eaeaea;
+    position: sticky;
+    top: 70px;
+    /* Adjust based on your navbar height */
+    z-index: 1020;
+    padding: 10px 0;
+}
+
+.category-nav .nav-link {
+    display: inline-block;
+    color: #333;
+    font-weight: 500;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.category-nav .nav-link:hover,
+.category-nav .nav-link.active {
+    color: #0d6efd;
+    /* Primary blue color */
+}
+
 /* ==========================================
    MOBILE DROPDOWN FIXES (Below 992px)
    ========================================== */
@@ -413,7 +448,7 @@ main {
    5. FOOTER STYLING
    ========================================== */
 
-   /* footer.css — Skylark Trinity site footer
+/* footer.css — Skylark Trinity site footer
    Drop into /assets/css/ and link it on any page that loads footer.html
    into #footer-placeholder. Uses the same brass-on-navy palette as the
    Skylark admin pages. */
@@ -432,7 +467,8 @@ main {
 }
 
 .st-footer a:hover {
-    color: #d9b25c; /* brass accent */
+    color: #d9b25c;
+    /* brass accent */
 }
 
 .st-footer-top {
@@ -511,9 +547,17 @@ main {
     color: #fff;
 }
 
-.st-social-fb { background: #1877F2; }
-.st-social-ig { background: radial-gradient(circle at 30% 110%, #fdf497, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
-.st-social-tt { background: #000; }
+.st-social-fb {
+    background: #1877F2;
+}
+
+.st-social-ig {
+    background: radial-gradient(circle at 30% 110%, #fdf497, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.st-social-tt {
+    background: #000;
+}
 
 /* Link columns */
 .st-footer-heading {
@@ -562,7 +606,7 @@ main {
     justify-content: center;
     gap: 12px;
     padding: 24px 0;
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255, 255, 255, .08);
 }
 
 .st-pay-icon {
@@ -589,7 +633,7 @@ main {
     flex-wrap: wrap;
     gap: 8px;
     padding: 18px 0;
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255, 255, 255, .08);
     font-size: 12px;
     color: #8b93a8;
 }
@@ -608,6 +652,7 @@ main {
     .st-footer-top {
         grid-template-columns: 1fr 1fr;
     }
+
     .st-footer-reviews {
         grid-column: 1 / -1;
     }
@@ -617,6 +662,7 @@ main {
     .st-footer-top {
         grid-template-columns: 1fr;
     }
+
     .st-footer {
         padding: 36px 20px 0;
     }
@@ -644,8 +690,8 @@ footer {
 }
 
 .logo-img {
-  height: 50px;
-  width: auto;
+    height: 50px;
+    width: auto;
 }
 
 /* ==========================================
